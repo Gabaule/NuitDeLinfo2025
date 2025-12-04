@@ -16,7 +16,7 @@ jobs:
 
     env:
       REGISTRY: ghcr.io
-      IMAGE_NAME: ${{ github.repository | lower }}  # owner/repo
+      IMAGE_NAME: ${{ toLower(github.repository) }}  # owner/repo
 
     steps:
       - name: Checkout repo

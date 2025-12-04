@@ -5,28 +5,34 @@ on:
     branches:
       - main
       - prod
-      - clementDS
+      - clementDS   # <= remplace par le nom de TA branche de test CD si besoin
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write   # pour pousser sur GHCR
+      packages: write   # nécessaire pour pousser sur GHCR
 
-    env:
-      REGISTRY: ghcr.io
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      # 👇 NORMALISATION DU NOM REPO (lowercase obligatoire)
+      # 1) LOGIN à GitHub Container Registry
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+
+      # 2) Mettre le nom du repo (owner/repo) en lowercase pour GHCR
       - name: Normalize repo name to lowercase
         id: vars_repo
         run: |
           echo "IMAGE_NAME=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
 
-      # 👇 CALCUL DU TAG (main → latest, prod → prod, sinon → nom de branche lowercase)
+      # 3) Choisir le tag de l'image en fonction de la branche
       - name: Set image tag
         id: vars
         run: |
@@ -38,15 +44,15 @@ jobs:
             echo "TAG=$(echo '${{ github.ref_name }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
           fi
 
-      # 👇 BUILD AVEC NOM CORRIGÉ
+      # 4) Build de l'image Docker
       - name: Build Docker image
         run: |
           docker build \
             -f docker/Dockerfile \
-            -t $REGISTRY/${{ steps.vars_repo.outputs.IMAGE_NAME }}:${{ steps.vars.outputs.TAG }} \
+            -t ghcr.io/${{ steps.vars_repo.outputs.IMAGE_NAME }}:${{ steps.vars.outputs.TAG }} \
             .
 
-      # 👇 PUSH
+      # 5) Push de l'image vers GHCR
       - name: Push Docker image
         run: |
-          docker push $REGISTRY/${{ steps.vars_repo.outputs.IMAGE_NAME }}:${{ steps.vars.outputs.TAG }}
+          docker push ghcr.io/${{ steps.vars_repo.outputs.IMAGE_NAME }}:${{ steps.vars.outputs.TAG }}

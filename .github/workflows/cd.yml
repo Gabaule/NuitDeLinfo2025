@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - prod
+      - clementDS
 
 jobs:
   build-and-push:
@@ -28,11 +29,13 @@ jobs:
       - name: Set image tag
         id: vars
         run: |
-          if [ "${{ github.ref_name }}" = "main" ]; then
-            echo "TAG=latest" >> $GITHUB_OUTPUT
-          else
-            echo "TAG=prod" >> $GITHUB_OUTPUT
-          fi
+            if [ "${{ github.ref_name }}" = "main" ]; then
+              echo "TAG=latest" >> $GITHUB_OUTPUT
+            elif [ "${{ github.ref_name }}" = "prod" ]; then
+              echo "TAG=prod" >> $GITHUB_OUTPUT
+            else
+              echo "TAG=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+            fi
 
       - name: Build Docker image
         run: |

@@ -1,0 +1,46 @@
+name: CD - Build & Push Docker image
+
+on:
+  push:
+    branches:
+      - main
+      - prod
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write   # pour pousser sur GHCR
+
+    env:
+      REGISTRY: ghcr.io
+      IMAGE_NAME: ${{ github.repository }}  # owner/repo
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login $REGISTRY -u $GITHUB_ACTOR --password-stdin
+
+      - name: Set image tag
+        id: vars
+        run: |
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            echo "TAG=latest" >> $GITHUB_OUTPUT
+          else
+            echo "TAG=prod" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            -f docker/Dockerfile \
+            -t $REGISTRY/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.TAG }} \
+            .
+
+      - name: Push Docker image
+        run: |
+          docker push $REGISTRY/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.TAG }}

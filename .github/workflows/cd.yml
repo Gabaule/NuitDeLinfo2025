@@ -16,7 +16,7 @@ jobs:
 
     env:
       REGISTRY: ghcr.io
-      IMAGE_NAME: ${{ github.repository }}  # owner/repo
+      IMAGE_NAME: ${{ github.repository | lower }}  # owner/repo
 
     steps:
       - name: Checkout repo
@@ -34,7 +34,7 @@ jobs:
             elif [ "${{ github.ref_name }}" = "prod" ]; then
               echo "TAG=prod" >> $GITHUB_OUTPUT
             else
-              echo "TAG=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+              echo "TAG=$(echo "${{ github.ref_name }}" | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
             fi
 
       - name: Build Docker image

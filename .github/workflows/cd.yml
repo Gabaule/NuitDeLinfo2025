@@ -3,9 +3,8 @@ name: CD - Build & Push Docker image
 on:
   push:
     branches:
-      - main
       - prod
-      - clementDS   # <= remplace par le nom de TA branche de test CD si besoin
+      - clementDS   # branche de test CD
 
 jobs:
   build-and-push:
@@ -32,27 +31,43 @@ jobs:
         run: |
           echo "IMAGE_NAME=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
 
-      # 3) Choisir le tag de l'image en fonction de la branche
-      - name: Set image tag
-        id: vars
+      # 3) Définir les tags (base + tag daté)
+      - name: Set image tags
+        id: tags
         run: |
+          # Tag principal selon la branche
           if [ "${{ github.ref_name }}" = "main" ]; then
-            echo "TAG=latest" >> $GITHUB_OUTPUT
+            BASE_TAG="latest"
           elif [ "${{ github.ref_name }}" = "prod" ]; then
-            echo "TAG=prod" >> $GITHUB_OUTPUT
+            BASE_TAG="prod"
           else
-            echo "TAG=$(echo '${{ github.ref_name }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+            BASE_TAG=$(echo '${{ github.ref_name }}' | tr '[:upper:]' '[:lower:]')
           fi
 
-      # 4) Build de l'image Docker
+          # Tag avec date UTC + nom de branche (toujours lowercase)
+          DATE_PART=$(date -u +"%Y%m%d-%H%M%S")
+          BRANCH_LOWER=$(echo '${{ github.ref_name }}' | tr '[:upper:]' '[:lower:]')
+          DATE_TAG="${DATE_PART}-${BRANCH_LOWER}"
+
+          echo "BASE_TAG=$BASE_TAG" >> $GITHUB_OUTPUT
+          echo "DATE_TAG=$DATE_TAG" >> $GITHUB_OUTPUT
+
+          echo "Base tag: $BASE_TAG"
+          echo "Date tag: $DATE_TAG"
+
+      # 4) Build de l'image Docker avec les deux tags
       - name: Build Docker image
         run: |
+          IMAGE="ghcr.io/${{ steps.vars_repo.outputs.IMAGE_NAME }}"
           docker build \
             -f docker/Dockerfile \
-            -t ghcr.io/${{ steps.vars_repo.outputs.IMAGE_NAME }}:${{ steps.vars.outputs.TAG }} \
+            -t $IMAGE:${{ steps.tags.outputs.BASE_TAG }} \
+            -t $IMAGE:${{ steps.tags.outputs.DATE_TAG }} \
             .
 
-      # 5) Push de l'image vers GHCR
+      # 5) Push de l'image vers GHCR (les deux tags)
       - name: Push Docker image
         run: |
-          docker push ghcr.io/${{ steps.vars_repo.outputs.IMAGE_NAME }}:${{ steps.vars.outputs.TAG }}
+          IMAGE="ghcr.io/${{ steps.vars_repo.outputs.IMAGE_NAME }}"
+          docker push $IMAGE:${{ steps.tags.outputs.BASE_TAG }}
+          docker push $IMAGE:${{ steps.tags.outputs.DATE_TAG }}

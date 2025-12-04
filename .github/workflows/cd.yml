@@ -16,34 +16,37 @@ jobs:
 
     env:
       REGISTRY: ghcr.io
-      IMAGE_NAME: ${{ toLower(github.repository) }}  # owner/repo
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Log in to GitHub Container Registry
+      # 👇 NORMALISATION DU NOM REPO (lowercase obligatoire)
+      - name: Normalize repo name to lowercase
+        id: vars_repo
         run: |
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login $REGISTRY -u $GITHUB_ACTOR --password-stdin
+          echo "IMAGE_NAME=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
 
+      # 👇 CALCUL DU TAG (main → latest, prod → prod, sinon → nom de branche lowercase)
       - name: Set image tag
         id: vars
         run: |
-            if [ "${{ github.ref_name }}" = "main" ]; then
-              echo "TAG=latest" >> $GITHUB_OUTPUT
-            elif [ "${{ github.ref_name }}" = "prod" ]; then
-              echo "TAG=prod" >> $GITHUB_OUTPUT
-            else
-              echo "TAG=$(echo "${{ github.ref_name }}" | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
-            fi
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            echo "TAG=latest" >> $GITHUB_OUTPUT
+          elif [ "${{ github.ref_name }}" = "prod" ]; then
+            echo "TAG=prod" >> $GITHUB_OUTPUT
+          else
+            echo "TAG=$(echo '${{ github.ref_name }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+          fi
 
+      # 👇 BUILD AVEC NOM CORRIGÉ
       - name: Build Docker image
         run: |
           docker build \
             -f docker/Dockerfile \
-            -t $REGISTRY/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.TAG }} \
+            -t $REGISTRY/${{ steps.vars_repo.outputs.IMAGE_NAME }}:${{ steps.vars.outputs.TAG }} \
             .
 
+      # 👇 PUSH
       - name: Push Docker image
         run: |
-          docker push $REGISTRY/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.TAG }}
+          docker push $REGISTRY/${{ steps.vars_repo.outputs.IMAGE_NAME }}:${{ steps.vars.outputs.TAG }}

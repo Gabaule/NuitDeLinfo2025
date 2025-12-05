@@ -25,6 +25,7 @@
             <nav class="main-nav" id="mainNav">
                 <a href="{{ url_for('home.index') }}" class="nav-link">Accueil</a>
                 <a href="{{ url_for('home.retro') }}" class="nav-link">Rétro</a>
+                <a href="{{ url_for('home.fake_login') }}" class="nav-link">Login</a>
                 {% if current_user.is_authenticated %}
                 <a href="{{ url_for('qcm.select_difficulty') }}" class="nav-link">QCMs</a>
                 {% endif %}

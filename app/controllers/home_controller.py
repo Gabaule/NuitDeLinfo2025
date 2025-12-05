@@ -54,3 +54,7 @@ def index():
 @home_bp.route('/retro')
 def retro():
     return render_template('retro.html')
+
+@home_bp.route('/fake_login')
+def fake_login():
+    return render_template('fake_login.html')

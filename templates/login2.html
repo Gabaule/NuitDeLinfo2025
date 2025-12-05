@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Web avec Passeport Interactif</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            height: 100vh;
+            background-color: #f0f0f0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #sideMenu {
+            position: fixed; bottom: 20px; left: 20px; width: 50px; height: 50px;
+            background-color: #8B4513; color: white; border-radius: 10px;
+            transition: width 0.4s ease-in-out, height 0.4s ease-in-out;
+            overflow: hidden; z-index: 1000; display: flex; align-items: center;
+        }
+        #sideMenu.open { width: 250px; height: 150px; }
+        #menuHandle {
+            position: absolute; top: 0; left: 0; width: 50px; height: 50px; cursor: pointer;
+            display: flex; justify-content: center; align-items: center; font-size: 24px;
+        }
+        #menuContent {
+            padding: 15px; margin-left: 50px; opacity: 0; transition: opacity 0.2s 0.2s;
+            width: 100%; height: 100%; box-sizing: border-box; display: flex;
+            align-items: center; justify-content: center;
+        }
+        #sideMenu.open #menuContent { opacity: 1; }
+
+        #passport {
+            width: 120px; height: 78px; cursor: move; user-select: none;
+            box-sizing: border-box; background-color: transparent; border: none;
+        }
+        #passport img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+        #passport.is-dragging { z-index: 1002; box-shadow: 0 10px 20px rgba(0,0,0,0.2); opacity: 0.9; }
+
+        #mainContent {
+            display: flex; flex-direction: column; justify-content: center;
+            align-items: center; height: 100%;
+        }
+        #formArea {
+            width: 400px; padding: 20px; background-color: #e9ecef;
+            border-radius: 8px; border: 2px dashed #adb5bd; text-align: center;
+            margin-bottom: 30px; transition: background-color 0.3s, opacity 0.3s;
+        }
+        #formArea.disabled { opacity: 0.5; background-color: #ccc; pointer-events: none; }
+        #instructions {
+            margin-bottom: 15px; color: #212529; font-weight: bold; user-select: none;
+        }
+        #dropZone {
+            width: 200px; height: 120px; border: 3px dashed #6c757d;
+            background-color: #ffffff; border-radius: 10px; display: flex;
+            justify-content: center; align-items: center; color: #6c757d;
+            transition: background-color 0.3s, border-color 0.3s; padding: 10px;
+            box-sizing: border-box;
+        }
+        #dropZone.drag-over { background-color: #e2e6ea; border-color: #007BFF; }
+
+        #chatbotButton {
+            position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px;
+            background-color: #708090; color: white; border: none; border-radius: 50%;
+            font-size: 28px; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2); z-index: 1000;
+        }
+
+        #stealingHand {
+            position: fixed;
+            font-size: 28px;
+            z-index: 1001;
+            opacity: 0;
+            pointer-events: none;
+            transition: top 8s linear, left 8s linear;
+        }
+
+        /* Styles du cadran */
+        .cadran-viewport{width:320px;height:320px;margin:20px auto;position:relative;}
+        .cadran{width:280px;height:280px;border-radius:50%;background:#3a3a3a;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(0deg);}
+        .digit{position:absolute;width:56px;height:56px;border-radius:50%;background:#e6e6e6;display:flex;align-items:center;justify-content:center;font-weight:bold;box-shadow:0 4px 10px rgba(0,0,0,.2);user-select:none;touch-action:none;}
+        #clearCadran{width:100%;padding:8px 10px;margin-top:10px;border-radius:6px;border:1px solid #bbb;background:#f5f5f5;cursor:pointer;}
+    </style>
+</head>
+<body>
+
+    <div id="sideMenu">
+        <div id="menuHandle">☰</div>
+        <div id="menuContent">
+            <div id="passport"><img src="passeport.png" alt="Passeport"></div>
+        </div>
+    </div>
+
+    <div id="mainContent">
+        <div id="formArea" class="disabled">
+            <p id="instructions">Déplacez le passeport dans la zone dédiée.</p>
+            <form id="myForm">
+                <input type="text" id="formInput" placeholder=" " required>
+                <button type="submit">Valider</button>
+            </form>
+
+            <!-- Cadran intégré pour le téléphone -->
+            <div id="cadranContainer" style="display:none;">
+              <div class="cadran-viewport">
+                <div id="cadran" class="cadran"></div>
+              </div>
+              <button type="button" id="clearCadran">Vider</button>
+            </div>
+
+        </div>
+        <div id="dropZone"><p>Zone de dépôt</p></div>
+    </div>
+
+    <button id="chatbotButton" onclick="alert('Lancement du chatbot IA...');">👋</button>
+    <div id="stealingHand">👋</div>
+
+    <script>
+        const passport = document.getElementById('passport');
+        const dropZone = document.getElementById('dropZone');
+        const menuContent = document.getElementById('menuContent');
+        const sideMenu = document.getElementById('sideMenu');
+        const formArea = document.getElementById('formArea');
+        const instructions = document.getElementById('instructions');
+        const myForm = document.getElementById('myForm');
+        const formInput = document.getElementById('formInput');
+        const chatbotButton = document.getElementById('chatbotButton');
+        const stealingHand = document.getElementById('stealingHand');
+        const cadranContainer = document.getElementById('cadranContainer');
+
+        document.getElementById('menuHandle').addEventListener('click', () => sideMenu.classList.toggle('open'));
+
+        let loginStep = 1;
+        const userData = { username: '', password: '', pin: '', phone: '' };
+
+        let isTheftInProgress = false;
+        let theftAttemptedOnce = false;
+        let theftTimeout = null;
+
+        let isDragging = false;
+        let offsetX = 0, offsetY = 0;
+
+        passport.addEventListener('mousedown', (e) => {
+            if (isTheftInProgress) stopTheft();
+
+            isDragging = true;
+            passport.classList.add('is-dragging');
+            const rect = passport.getBoundingClientRect();
+            offsetX = rect.width / 2;
+            offsetY = rect.height / 2;
+            passport.style.position = 'absolute';
+            passport.style.width = `${rect.width}px`;
+            passport.style.height = `${rect.height}px`;
+            passport.style.top = `${e.clientY - offsetY}px`;
+            passport.style.left = `${e.clientX - offsetX}px`;
+            document.body.appendChild(passport);
+
+            if(dropZone.contains(passport) || menuContent.contains(passport)) {
+                 deactivateFormArea();
+            }
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            passport.style.left = `${e.clientX - offsetX}px`;
+            passport.style.top = `${e.clientY - offsetY}px`;
+            dropZone.classList.toggle('drag-over', isOverElement(passport, dropZone));
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            passport.classList.remove('is-dragging');
+            dropZone.classList.remove('drag-over');
+
+            if (isOverElement(passport, dropZone)) {
+                dropZone.innerHTML = '';
+                dropZone.appendChild(passport);
+                resetPassportStyle();
+                activateFormArea();
+            } else if (isOverElement(passport, menuContent) && sideMenu.classList.contains('open')) {
+                menuContent.innerHTML = '';
+                menuContent.appendChild(passport);
+                resetPassportStyle();
+            }
+        });
+
+        myForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const value = formInput.value.trim();
+            if (value === '') return;
+            handleFormSubmit(value);
+        });
+
+        function handleFormSubmit(value) {
+             switch (loginStep) {
+                case 1: userData.username = value; loginStep++; break;
+                case 2: userData.phone = value; loginStep++; break;
+                case 3: userData.password = value; loginStep++; break;
+                case 4:
+                    if (value === userData.password) loginStep++;
+                    else alert("Les mots de passe ne correspondent pas.");
+                    break;
+                case 5:
+                    if (/^\d{6}$/.test(value)) { userData.pin = value; loginStep++; }
+                    else alert("Erreur : Le code doit être composé de 6 chiffres.");
+                    break;
+                case 6:
+                    if (value === "V4l1d@ti0n") loginStep++;
+                    else { alert("Code incorrect. Retour à l'étape 5."); loginStep = 5; }
+                    break;
+                case 7:
+                    const reversedPin = userData.pin.split('').reverse().join('');
+                    if (value === reversedPin) {
+                        loginStep++;
+                        alert(`Bienvenue, ${userData.username} ! Connexion réussie.`);
+                        stopTheft();
+                        loginStep = 1;
+                        Object.keys(userData).forEach(k => userData[k] = '');
+                        theftAttemptedOnce = false;
+                    } else { alert("Code incorrect. Retour à l'étape 5."); loginStep = 5; }
+                    break;
+            }
+            formInput.value = '';
+            updateFormUI();
+            startTheft();
+        }
+
+        function startTheft() {
+            const canAttemptTheft = (loginStep >= 4 && !theftAttemptedOnce) || (loginStep === 6 && theftAttemptedOnce);
+
+            if (canAttemptTheft && dropZone.contains(passport) && !isTheftInProgress) {
+                isTheftInProgress = true;
+                theftAttemptedOnce = true;
+                chatbotButton.innerHTML = '';
+
+                const btnRect = chatbotButton.getBoundingClientRect();
+                stealingHand.style.transition = 'none';
+                stealingHand.style.top = `${btnRect.top + 15}px`;
+                stealingHand.style.left = `${btnRect.left + 15}px`;
+                stealingHand.style.opacity = '1';
+
+                const passportRect = passport.getBoundingClientRect();
+                const targetX = passportRect.left + (passportRect.width / 2);
+                const targetY = passportRect.top + (passportRect.height / 2);
+
+                setTimeout(() => {
+                    stealingHand.style.transition = 'top 8s linear, left 8s linear';
+                    stealingHand.style.top = `${targetY}px`;
+                    stealingHand.style.left = `${targetX}px`;
+                }, 50);
+
+                theftTimeout = setTimeout(grabAndStealPassport, 8050);
+            }
+        }
+
+        function grabAndStealPassport() {
+            if (!isTheftInProgress) return;
+            deactivateFormArea();
+            isTheftInProgress = true;
+
+            const rect = passport.getBoundingClientRect();
+            passport.style.position = 'absolute';
+            passport.style.width = `${rect.width}px`;
+            passport.style.height = `${rect.height}px`;
+            passport.style.top = `${rect.top}px`;
+            passport.style.left = `${rect.left}px`;
+            document.body.appendChild(passport);
+
+            const getawayDuration = '10s';
+            stealingHand.style.transition = `top ${getawayDuration} linear, left ${getawayDuration} linear`;
+            passport.style.transition = `top ${getawayDuration} linear, left ${getawayDuration} linear`;
+
+            setTimeout(() => {
+                const getawayX = window.innerWidth;
+                const getawayY = window.innerHeight;
+                stealingHand.style.top = `${getawayY}px`;
+                stealingHand.style.left = `${getawayX}px`;
+                passport.style.top = `${getawayY}px`;
+                passport.style.left = `${getawayX}px`;
+            }, 50);
+        }
+
+        function stopTheft() {
+            if (!isTheftInProgress) return;
+            isTheftInProgress = false;
+            clearTimeout(theftTimeout);
+
+            const btnRect = chatbotButton.getBoundingClientRect();
+            stealingHand.style.transition = 'top 2s ease, left 2s ease, opacity 2s';
+            stealingHand.style.top = `${btnRect.top + 15}px`;
+            stealingHand.style.left = `${btnRect.left + 15}px`;
+            passport.style.transition = 'none';
+            setTimeout(() => {
+                if (!isTheftInProgress) {
+                    stealingHand.style.opacity = '0';
+                    chatbotButton.innerHTML = '👋';
+                }
+            }, 2000);
+        }
+
+        function updateFormUI() {
+            switch (loginStep) {
+                case 1:
+                    instructions.textContent = "Étape 1/7 : Entrez votre nom d'utilisateur.";
+                    formInput.placeholder = "Nom d'utilisateur";
+                    formInput.type = 'text';
+                    cadranContainer.style.display = 'none';
+                    break;
+                case 2:
+                    instructions.textContent = "Étape 2/7 : Entrez votre numéro de téléphone via le cadran.";
+                    formInput.placeholder = "Numéro de téléphone";
+                    formInput.type = 'text';
+                    formInput.value = '';
+                    cadranContainer.style.display = 'block';
+                    break;
+                case 3:
+                    instructions.textContent = "Étape 3/7 : Créez un mot de passe.";
+                    formInput.placeholder = "Mot de passe";
+                    formInput.type = 'password';
+                    cadranContainer.style.display = 'none';
+                    break;
+                case 4:
+                    instructions.textContent = "Étape 4/7 : Confirmez votre mot de passe.";
+                    formInput.placeholder = "Confirmez le mot de passe";
+                    formInput.type = 'password';
+                    break;
+                case 5:
+                    instructions.textContent = "Étape 5/7 : Créez un code à 6 chiffres.";
+                    formInput.placeholder = "Code à 6 chiffres";
+                    formInput.type = 'text';
+                    break;
+                case 6:
+                    instructions.textContent = "Étape 6/7 : Entrez le code : V4l1d@ti0n";
+                    formInput.placeholder = "Code de validation";
+                    formInput.type = 'text';
+                    break;
+                case 7:
+                    instructions.textContent = "Étape 7/7 : Entrez votre code en sens inverse.";
+                    formInput.placeholder = "Code inversé";
+                    formInput.type = 'text';
+                    break;
+                case 8:
+                    instructions.textContent = "Connexion réussie !";
+                    formArea.classList.add('disabled');
+                    break;
+            }
+        }
+
+        function isOverElement(elA, elB) {
+            const rectA = elA.getBoundingClientRect();
+            const rectB = elB.getBoundingClientRect();
+            return !(rectA.right < rectB.left || rectA.left > rectB.right || rectA.bottom < rectB.top || rectA.top > rectB.bottom);
+        }
+        function resetPassportStyle() {
+            passport.style.position = 'relative'; passport.style.top = 'auto';
+            passport.style.left = 'auto'; passport.style.transition = 'none';
+            passport.style.width = '120px'; passport.style.height = '78px';
+        }
+        function activateFormArea() {
+            formArea.classList.remove('disabled');
+            Array.from(myForm.elements).forEach(el => el.disabled = false);
+            updateFormUI();
+        }
+        function deactivateFormArea() {
+            stopTheft();
+            if (dropZone.childElementCount === 0) {
+                dropZone.innerHTML = '<p>Zone de dépôt</p>';
+            }
+            formArea.classList.add('disabled');
+            instructions.textContent = 'Déplacez le passeport dans la zone dédiée.';
+            Array.from(myForm.elements).forEach(el => el.disabled = true);
+        }
+
+        // --- Cadran pour numéro de téléphone ---
+        (function(){
+          const cadran = document.getElementById('cadran');
+          const clearCadran = document.getElementById('clearCadran');
+          const digits = ['1','2','3','4','5','6','7','8','9','0'];
+          const r = 110, cx=140, cy=140;
+
+          digits.forEach((d,i)=>{
+            const el = document.createElement('div');
+            el.className='digit';
+            el.textContent=d;
+            const angle=(-90+i*(360/digits.length))*Math.PI/180;
+            el.style.left=(cx+Math.cos(angle)*r-28)+'px';
+            el.style.top=(cy+Math.sin(angle)*r-28)+'px';
+            el.dataset.value=d;
+            cadran.appendChild(el);
+          });
+
+          let dragging=false,startX=0,baseAngle=0,currentAngle=0,pendingDigit=null;
+
+          function applyRotation(angle,animate=false){
+            cadran.style.transition = animate?'transform 0.4s cubic-bezier(.2,.9,.3,1)':'none';
+            cadran.style.transform=`translate(-50%, -50%) rotate(${angle}deg)`;
+          }
+
+          cadran.addEventListener('pointerdown',(ev)=>{
+            const btn=ev.target.closest('.digit');
+            if(!btn) return;
+            ev.preventDefault();
+            pendingDigit=btn.dataset.value;
+            dragging=true;
+            startX=ev.clientX;
+            baseAngle=currentAngle;
+            try{ ev.target.setPointerCapture(ev.pointerId); } catch(e){}
+          });
+
+          cadran.addEventListener('pointermove',(ev)=>{
+            if(!dragging) return;
+            const dx=ev.clientX-startX;
+            currentAngle=baseAngle+dx*0.4;
+            applyRotation(currentAngle,false);
+          });
+
+          function endDrag(ev){
+            if(!dragging) return;
+            dragging=false;
+            currentAngle=0;
+            applyRotation(0,true);
+            if(pendingDigit){ formInput.value+=pendingDigit; pendingDigit=null; }
+            try{ ev.target.releasePointerCapture(ev.pointerId); } catch(e){}
+          }
+
+          cadran.addEventListener('pointerup',endDrag);
+          cadran.addEventListener('pointercancel',endDrag);
+
+          clearCadran.addEventListener('click',()=>{ formInput.value=''; });
+          document.addEventListener('selectstart', (e)=>{ if(dragging) e.preventDefault(); });
+        })();
+
+    </script>
+</body>
+</html>

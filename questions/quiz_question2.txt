@@ -1,0 +1,304 @@
+{
+  "questionnaire": [
+    {
+      "id": 1,
+      "question": "Qu'est-ce que le 'code source' d'un logiciel ?",
+      "options": [
+        { "id": "A", "text": "Le nom du créateur du logiciel." },
+        { "id": "B", "text": "L'ensemble des instructions écrites par les programmeurs." },
+        { "id": "C", "text": "La clé d'activation nécessaire pour installer le logiciel." },
+        { "id": "D", "text": "Un code secret pour débloquer des fonctionnalités." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 2,
+      "question": "Parmi ces navigateurs web, lesquels sont open-source ?",
+      "options": [
+        { "id": "A", "text": "Mozilla Firefox" },
+        { "id": "B", "text": "Google Chrome" },
+        { "id": "C", "text": "Microsoft Edge" },
+        { "id": "D", "text": "Chromium" }
+      ],
+      "responses_multiples": true,
+      "reponse_correcte": ["A", "D"]
+    },
+    {
+      "id": 3,
+      "question": "Qui est une figure emblématique du mouvement du logiciel libre, initiateur du projet GNU ?",
+      "options": [
+        { "id": "A", "text": "Bill Gates" },
+        { "id": "B", "text": "Steve Jobs" },
+        { "id": "C", "text": "Richard Stallman" },
+        { "id": "D", "text": "Mark Zuckerberg" }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["C"]
+    },
+    {
+      "id": 4,
+      "question": "Quel est l'avantage pour une communauté de pouvoir accéder au code source d'un logiciel ?",
+      "options": [
+        { "id": "A", "text": "Cela permet de vérifier qu'il ne contient pas de fonction cachée qui t'espionne." },
+        { "id": "B", "text": "Cela permet qu'aucune personne ne peut le copier ni le télécharger." },
+        { "id": "C", "text": "Cela permet à n'importe qui de l'améliorer ou de corriger des bugs." },
+        { "id": "D", "text": "Cela permet de le rendre compatible avec tous les ordinateurs." }
+      ],
+      "responses_multiples": true,
+      "reponse_correcte": ["A", "C"]
+    },
+    {
+      "id": 5,
+      "question": "L'expression 'Si c'est gratuit, c'est que vous êtes le produit' s'applique souvent aux services des GAFAM. Qu'est-ce que cela signifie ?",
+      "options": [
+        { "id": "A", "text": "Les services sont souvent selon les experts de très mauvaise qualité." },
+        { "id": "B", "text": "Les utilisateurs sont obligés de regarder beaucoup de publicités pour pouvoir utiliser le service." },
+        { "id": "C", "text": "Les entreprises ont tendance à introduire des frais cachés à régler plus tard." },
+        { "id": "D", "text": "Les entreprises gagnent de l'argent en vendant tes données personnelles à des publicitaires." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["D"]
+    },
+    {
+      "id": 6,
+      "question": "Qu'est-ce qu'un 'écosystème numérique' créé par un GAFAM ?",
+      "options": [
+        { "id": "A", "text": "Un groupe de discussion sur l'environnement rassemblant des programmeurs, des spécialites de la transition numérique et des utilisateurs." },
+        { "id": "B", "text": "Un service d'après vente conçu pour recycler les vieux appareils électroniques et de les rendre de nouveau fonctionnels." },
+        { "id": "C", "text": "Un ensemble de services et de produits (email, cloud, smartphone, etc.) conçus pour fonctionner parfaitement ensemble et te garder captif." },
+        { "id": "D", "text": "Une méthodologie propre à l'entreprise pour permettre les communications entre utilisateurs de plusieurs continents." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["C"]
+    },
+    {
+      "id": 7,
+      "question": "Pour stocker tes fichiers en ligne, quelles sont les alternatives libres à Google Drive ou Microsoft OneDrive ?",
+      "options": [
+        { "id": "A", "text": "Nextcloud" },
+        { "id": "B", "text": "Dropbox" },
+        { "id": "C", "text": "KDrive" },
+        { "id": "D", "text": "Cozy Drive" }
+      ],
+      "responses_multiples": true,
+      "reponse_correcte": ["A", "C", "D"]
+    },
+    {
+      "id": 8,
+      "question": "Qu'est-ce qu'un réseau social 'fédéré' comme Mastodon, alternative à Twitter (X) ?",
+      "options": [
+        { "id": "A", "text": "Un réseau composé de multiples serveurs indépendants qui peuvent communiquer entre eux." },
+        { "id": "B", "text": "Un réseau social où toutes les données sont stockées au même endroit pour plus de sécurité." },
+        { "id": "C", "text": "Un réseau social géré par le gouvernement." },
+        { "id": "D", "text": "Un réseau social payant et sans publicité." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["A"]
+    },
+    {
+      "id": 9,
+      "question": "Qui a créé le noyau (le cœur) de Linux ?",
+      "options": [
+        { "id": "A", "text": "Bill Gates" },
+        { "id": "B", "text": "Linus Torvalds" },
+        { "id": "C", "text": "L'armée américaine" },
+        { "id": "D", "text": "Richard Stallman" }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 10,
+      "question": "Quelle est la mascotte officielle de Linux ?",
+      "options": [
+        { "id": "A", "text": "Un renard nommé Foxy" },
+        { "id": "B", "text": "Un fantôme nommé Boux" },
+        { "id": "C", "text": "Un robot nommé Linus" },
+        { "id": "D", "text": "Un manchot nommé Tux" }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["D"]
+    },
+    {
+      "id": 11,
+      "question": "Pourquoi Linux est-il massivement utilisé pour faire fonctionner les serveurs web dans le monde ?",
+      "options": [
+        { "id": "A", "text": "Parce qu'il est le seul système d'exploitation capable de se connecter à Internet." },
+        { "id": "B", "text": "Pour sa stabilité, sa sécurité et sa gratuité." },
+        { "id": "C", "text": "Parce qu'il est plus joli que Windows." },
+        { "id": "D", "text": "Parce qu'il a été créé spécialement pour ça." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 12,
+      "question": "Sur Linux, qu'est-ce qu'un 'environnement de bureau' ?",
+      "options": [
+        { "id": "A", "text": "Le nom de l'écran de l'ordinateur." },
+        { "id": "B", "text": "Un logiciel pour organiser tes fournitures scolaires." },
+        { "id": "C", "text": "L'interface graphique (menus, icônes, fenêtres) que tu utilises." },
+        { "id": "D", "text": "Le fond d'écran par défaut." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["C"]
+    },
+    {
+      "id": 13,
+      "question": "Qu'est-ce qu'un 'cookie' sur un site internet ?",
+      "options": [
+        { "id": "A", "text": "Un petit cadeau virtuel offert quand tu visites un site pour la première fois." },
+        { "id": "B", "text": "Un virus qui ralentit ta connexion et qui demande à effacer régulièrement les données de son navigateur." },
+        { "id": "C", "text": "Un petit fichier texte stocké sur ton ordinateur qui peut servir à te reconnaître et à te suivre sur internet." },
+        { "id": "D", "text": "Le score de popularité d'un site web." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["C"]
+    },
+    {
+      "id": 14,
+      "question": "Qu'est-ce que le 'hameçonnage' (phishing) ?",
+      "options": [
+        { "id": "A", "text": "Une technique pour pêcher des poissons rares grâce à internet." },
+        { "id": "B", "text": "Une technique de vol d'informations où un pirate imite une entreprise." },
+        { "id": "C", "text": "Le ciblage de personnes par les entreprises et leurs suivis par des hameçons numériquessss." },
+        { "id": "D", "text": "Un moyen de sécuriser sa boite mail." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 15,
+      "question": "À quoi sert un VPN (Réseau Privé Virtuel) ?",
+      "options": [
+        { "id": "A", "text": "À augmenter la vitesse de ta connexion internet." },
+        { "id": "B", "text": "À chiffrer ta connexion internet pour la rendre plus sécurisée." },
+        { "id": "C", "text": "À installer des jeux gratuitement." },
+        { "id": "D", "text": "À nettoyer les virus de ton ordinateur." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 16,
+      "question": "L'authentification à deux facteurs (2FA) est une mesure de sécurité qui consiste à...",
+      "options": [
+        { "id": "A", "text": "Utiliser deux mots de passe différents pour le même compte." },
+        { "id": "B", "text": "Valider ta connexion avec deux appareils différents." },
+        { "id": "C", "text": "Confirmer ton identité via deux moyens différents." },
+        { "id": "D", "text": "Changer son mot de passe deux fois par an." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["C"]
+    },
+    {
+      "id": 17,
+      "question": "Dans la démarche NIRD, que signifie le concept de 'sobriété numérique' ?",
+      "options": [
+        { "id": "A", "text": "Ne plus jamais utiliser d'appareils numériques." },
+        { "id": "B", "text": "Utiliser le numérique de manière plus modérée et réfléchie pour en réduire l'impact environnemental et social." },
+        { "id": "C", "text": "Acheter uniquement des appareils numériques de couleur sobre (noir, gris)." },
+        { "id": "D", "text": "Ne naviguer sur internet qu'une heure par jour." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 18,
+      "question": "En quoi l'utilisation de matériel informatique reconditionné s'inscrit-elle dans l'axe 'Durable' de la démarche NIRD ?",
+      "options": [
+        { "id": "A", "text": "Le matériel reconditionné est plus performant que le neuf." },
+        { "id": "B", "text": "Cela permet d'allonger la durée de vie des équipements et de réduire la production de déchets électroniques." },
+        { "id": "C", "text": "Cela coûte moins cher." },
+        { "id": "D", "text": "Cela évite l'épuisement des ressources nécessaires à la fabrication d'appareils neufs." }
+      ],
+      "responses_multiples": true,
+      "reponse_correcte": ["B", "C", "D"]
+    },
+    {
+      "id": 19,
+      "question": "Que cherche à combattre l'axe 'Inclusif' de la démarche NIRD ?",
+      "options": [
+        { "id": "A", "text": "L'utilisation excessive des réseaux sociaux." },
+        { "id": "B", "text": "L'illettrisme numérique (l'illectronisme), c'est-à-dire la difficulté à utiliser les outils numériques." },
+        { "id": "C", "text": "La fracture numérique, où certaines personnes n'ont pas accès à internet ou au matériel." },
+        { "id": "D", "text": "Le piratage informatique." }
+      ],
+      "responses_multiples": true,
+      "reponse_correcte": ["B", "C"]
+    },
+    {
+      "id": 20,
+      "question": "Comment le fait d'apprendre à coder avec des outils open-source comme Python ou Scratch correspond à l'axe 'Responsable' de la démarche NIRD ?",
+      "options": [
+        { "id": "A", "text": "Cela te donne les clés pour comprendre comment fonctionne le numérique, et ne plus être un simple consommateur." },
+        { "id": "B", "text": "Cela te rend dépendant des grosses entreprises qui créent ces langages." },
+        { "id": "C", "text": "Cela favorise le partage des connaissances et la collaboration." },
+        { "id": "D", "text": "Cela garantit que tu auras un bon salaire plus tard." }
+      ],
+      "responses_multiples": true,
+      "reponse_correcte": ["A", "C"]
+    },
+    {
+      "id": 21,
+      "question": "Qu'est-ce qu'un logiciel 'propriétaire' ?",
+      "options": [
+        { "id": "A", "text": "Un logiciel qui appartient à l'État." },
+        { "id": "B", "text": "Un logiciel dont nous ne pouvons pas partager ni réutiliser librement." },
+        { "id": "C", "text": "Un logiciel développé par le propriétaire d'un ordinateur." },
+        { "id": "D", "text": "Un logiciel qui n'a pas besoin d'être installé." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 22,
+      "question": "Pourquoi l'utilisation d'un Wi-Fi public (gare, aéroport, restaurant) peut-elle être risquée pour tes données personnelles ?",
+      "options": [
+        { "id": "A", "text": "La connexion est souvent très lente." },
+        { "id": "B", "text": "Le réseau est souvent peu ou pas sécurisé, ce qui permet à des personnes malintentionnées d'intercepter ce que tu fais." },
+        { "id": "C", "text": "Il faut souvent donner son adresse e-mail pour s'y connecter." },
+        { "id": "D", "text": "C'est toujours payant." }
+      ],
+      "responses_multiples": true,
+      "reponse_correcte": ["B", "C"]
+    },
+    {
+      "id": 23,
+      "question": "Android, le système d'exploitation de la majorité des smartphones, est basé sur le noyau Linux. Est-ce que cela en fait un système totalement 'libre' et respectueux de la vie privée ?",
+      "options": [
+        { "id": "A", "text": "Oui, comme c'est basé sur Linux, c'est forcément un système ouvert et sûr." },
+        { "id": "B", "text": "Non, car la version utilisée par les fabricants intègre de nombreux services Google non-libres qui collectent beaucoup de données." },
+        { "id": "C", "text": "Non, il existe des versions d'Android sans les services Google qui sont plus respectueuses de la vie privée." }
+      ],
+      "responses_multiples": true,
+      "reponse_correcte": ["B", "C"]
+    },
+    {
+      "id": 24,
+      "question": "Quelle action concrète ton lycée pourrait-il mettre en place pour appliquer la démarche NIRD ?",
+      "options": [
+        { "id": "A", "text": "Remplacer tous les ordinateurs par des modèles neufs chaque année." },
+        { "id": "B", "text": "Organiser une collecte de vieux matériel informatique pour le faire reconditionner ou le recycler correctement." },
+        { "id": "C", "text": "Installer une distribution Linux sur les ordinateurs des salles informatiques." },
+        { "id": "D", "text": "Interdire l'accès à internet pour réduire la consommation d'énergie." },
+        { "id": "E", "text": "Proposer des ateliers pour apprendre à mieux protéger ses données personnelles en ligne." }
+      ],
+      "responses_multiples": true,
+      "reponse_correcte": ["B", "C", "E"]
+    },
+    {
+      "id": 25,
+      "question": "Quel est l'impact environnemental principal du visionnage de vidéos en streaming (YouTube, Netflix, etc.) ?",
+      "options": [
+        { "id": "A", "text": "Aucun, car tout est dématérialisé." },
+        { "id": "B", "text": "L'usure de l'écran de ton appareil." },
+        { "id": "C", "text": "La consommation d'électricité des centres de données qui distribuent ces vidéos." },
+        { "id": "D", "text": "Le fait de baisser la qualité vidéo peut réduire cet impact." }
+      ],
+      "responses_multiples": true,
+      "reponse_correcte": ["C", "D"]
+    }
+  ]
+}

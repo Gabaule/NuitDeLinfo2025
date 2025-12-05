@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Sélection Difficulté - NIRD{% endblock %}
+
+{% block content %}
+<section class="section" id="quizzes">
+    <div class="section-head">
+        <h2>Choisissez votre niveau</h2>
+        <p>Prêt à tester vos connaissances? Sélectionnez la difficulté de votre quiz!</p>
+    </div>
+
+    <div class="quiz-list">
+        <article class="quiz-card">
+            <div class="quiz-icon quiz-icon-green" aria-hidden="true"></div>
+            <div class="quiz-body">
+                <div class="quiz-title">Quiz : Facile</div>
+                <div class="quiz-desc">Commencez en douceur avec des questions accessibles à tous.</div>
+                <span class="chip">Débutant</span>
+            </div>
+            <a href="{{ url_for('qcm.start_quiz', difficulty='facile') }}" class="play-btn" aria-label="Lancer le quiz facile">▶</a>
+        </article>
+
+        <article class="quiz-card">
+            <div class="quiz-icon quiz-icon-amber" aria-hidden="true"></div>
+            <div class="quiz-body">
+                <div class="quiz-title">Quiz : Moyen</div>
+                <div class="quiz-desc">Testez vos connaissances avec des cas concrets et pratiques.</div>
+                <span class="chip">Intermédiaire</span>
+            </div>
+            <a href="{{ url_for('qcm.start_quiz', difficulty='moyen') }}" class="play-btn" aria-label="Lancer le quiz moyen">▶</a>
+        </article>
+
+        <article class="quiz-card">
+            <div class="quiz-icon quiz-icon-red" aria-hidden="true"></div>
+            <div class="quiz-body">
+                <div class="quiz-title">Quiz : Difficile</div>
+                <div class="quiz-desc">Des questions pointues pour les plus aguerris!</div>
+                <span class="chip">Expert</span>
+            </div>
+            <a href="{{ url_for('qcm.start_quiz', difficulty='difficile') }}" class="play-btn" aria-label="Lancer le quiz difficile">▶</a>
+        </article>
+    </div>
+</section>
+{% endblock %}

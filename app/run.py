@@ -1,11 +1,7 @@
-from flask import Flask
+from app import create_app
 
-app = Flask(__name__)
+# Créer l'application avec la configuration par défaut
+app = create_app()
 
-@app.route("/")
-def index():
-    return "coucou 😎 v2"
-
-if __name__ == "__main__":
-    # important: host=0.0.0.0 pour que Docker expose bien le serveur
-    app.run(host="0.0.0.0", port=5045)
+if __name__ == '__main__':
+    app.run(debug=True, port=5045)

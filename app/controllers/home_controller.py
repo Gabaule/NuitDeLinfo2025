@@ -1,10 +1,10 @@
-"""Routes pour la page d'accueil"""
+"""Home Controller - Architecture MVC"""
 from flask import Blueprint, render_template
 
-bp = Blueprint('home', __name__)
+home_bp = Blueprint('home', __name__)
 
 
-@bp.route('/')
+@home_bp.route('/')
 def index():
     """Page d'accueil NIRD"""
     return render_template('index.html')

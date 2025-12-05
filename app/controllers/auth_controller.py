@@ -1,12 +1,12 @@
-"""Routes pour l'authentification (login/logout/register)"""
+"""Auth Controller - Architecture MVC"""
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user, login_required
 from app.models import db, User
 
-bp = Blueprint('auth', __name__, url_prefix='/auth')
+auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 
-@bp.route('/login', methods=['GET', 'POST'])
+@auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     """Page de connexion"""
     if request.method == 'POST':
@@ -26,16 +26,16 @@ def login():
     return render_template('login.html')
 
 
-@bp.route('/logout')
+@auth_bp.route('/logout')
 @login_required
 def logout():
-    """Déconnexion"""
+    """Dï¿½connexion"""
     logout_user()
-    flash('Vous avez été déconnecté', 'info')
+    flash('Vous avez ï¿½tï¿½ dï¿½connectï¿½', 'info')
     return redirect(url_for('home.index'))
 
 
-@bp.route('/register', methods=['GET', 'POST'])
+@auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
     """Inscription (optionnel pour la Nuit de l'Info)"""
     if request.method == 'POST':
@@ -43,23 +43,23 @@ def register():
         password = request.form.get('password')
         pseudo = request.form.get('pseudo')
 
-        # Vérifier si l'utilisateur existe déjà
+        # Vï¿½rifier si l'utilisateur existe dï¿½jï¿½
         if User.query.filter_by(email=email).first():
-            flash('Cet email est déjà utilisé', 'danger')
+            flash('Cet email est dï¿½jï¿½ utilisï¿½', 'danger')
             return redirect(url_for('auth.register'))
 
         if User.query.filter_by(pseudo=pseudo).first():
-            flash('Ce pseudo est déjà pris', 'danger')
+            flash('Ce pseudo est dï¿½jï¿½ pris', 'danger')
             return redirect(url_for('auth.register'))
 
-        # Créer nouvel utilisateur
+        # Crï¿½er nouvel utilisateur
         user = User(email=email, pseudo=pseudo)
         user.set_password(password)
 
         db.session.add(user)
         db.session.commit()
 
-        flash('Compte créé avec succès! Vous pouvez maintenant vous connecter.', 'success')
+        flash('Compte crï¿½ï¿½ avec succï¿½s! Vous pouvez maintenant vous connecter.', 'success')
         return redirect(url_for('auth.login'))
 
     return render_template('register.html')

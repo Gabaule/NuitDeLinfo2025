@@ -1,4 +1,4 @@
-"""Routes pour le chatbot ShadyGPT (Ollama)"""
+"""Chatbot Controller - Architecture MVC"""
 from flask import Blueprint, request, jsonify, current_app, Response
 from flask_login import login_required, current_user
 from app.models import db, ChatbotConversation, ChatbotMessage
@@ -9,10 +9,10 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from ollama_client import OllamaClient
 
-bp = Blueprint('chatbot', __name__, url_prefix='/api/chat')
+chatbot_bp = Blueprint('chatbot', __name__, url_prefix='/api/chat')
 
 
-@bp.route('', methods=['POST'])
+@chatbot_bp.route('', methods=['POST'])
 @login_required
 def chat():
     """
@@ -118,7 +118,7 @@ def chat():
         }), 500
 
 
-@bp.route('/stream', methods=['POST'])
+@chatbot_bp.route('/stream', methods=['POST'])
 @login_required
 def chat_stream():
     """Version streaming du chatbot (pour réponses en temps réel)"""

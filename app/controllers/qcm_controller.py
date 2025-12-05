@@ -1,21 +1,21 @@
-"""Routes pour le système de QCM"""
+"""QCM Controller - Architecture MVC"""
 from flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify
 from flask_login import login_required, current_user
 from app.models import db, Question, QcmSession, QcmSessionQuestion, UserAnswer, QuestionChoice
 import random
 from datetime import datetime
 
-bp = Blueprint('qcm', __name__, url_prefix='/qcm')
+qcm_bp = Blueprint('qcm', __name__, url_prefix='/qcm')
 
 
-@bp.route('/')
+@qcm_bp.route('/')
 @login_required
 def select_difficulty():
     """Page de sélection de la difficulté"""
     return render_template('qcm_select.html')
 
 
-@bp.route('/<difficulty>/start')
+@qcm_bp.route('/<difficulty>/start')
 @login_required
 def start_quiz(difficulty):
     """Démarrer un nouveau quiz avec une difficulté donnée"""
@@ -59,7 +59,7 @@ def start_quiz(difficulty):
     return redirect(url_for('qcm.question', session_id=session.id, num=1))
 
 
-@bp.route('/<uuid:session_id>/question/<int:num>')
+@qcm_bp.route('/<uuid:session_id>/question/<int:num>')
 @login_required
 def question(session_id, num):
     """Afficher une question spécifique"""
@@ -95,7 +95,7 @@ def question(session_id, num):
                            existing_answer=existing_answer)
 
 
-@bp.route('/<uuid:session_id>/answer', methods=['POST'])
+@qcm_bp.route('/<uuid:session_id>/answer', methods=['POST'])
 @login_required
 def submit_answer(session_id):
     """Enregistrer une réponse"""
@@ -162,7 +162,7 @@ def submit_answer(session_id):
     return jsonify({'success': True, 'score': session_question.question_score})
 
 
-@bp.route('/<uuid:session_id>/complete')
+@qcm_bp.route('/<uuid:session_id>/complete')
 @login_required
 def complete_quiz(session_id):
     """Terminer le quiz et calculer le score final"""
@@ -184,7 +184,7 @@ def complete_quiz(session_id):
     return redirect(url_for('qcm.results', session_id=session_id))
 
 
-@bp.route('/<uuid:session_id>/results')
+@qcm_bp.route('/<uuid:session_id>/results')
 @login_required
 def results(session_id):
     """Afficher les résultats du quiz"""

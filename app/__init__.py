@@ -1,4 +1,10 @@
-"""Factory Flask pour l'application NIRD - Nuit de l'Info 2025"""
+"""Factory Flask - Architecture MVC
+
+Structure:
+- Models: app/models/ (User, Question, QcmSession, ChatbotMessage, etc.)
+- Controllers: app/controllers/ (auth_controller, qcm_controller, chatbot_controller)
+- Views: templates/ (HTML Jinja2)
+"""
 from flask import Flask
 from flask_login import LoginManager
 from flask_cors import CORS
@@ -18,7 +24,7 @@ def load_user(user_id):
 
 
 def create_app(config_name=None):
-    """Factory pour créer l'application Flask"""
+    """Factory pour crÃ©er l'application Flask - Architecture MVC"""
 
     if config_name is None:
         config_name = os.environ.get('FLASK_ENV', 'development')
@@ -37,16 +43,16 @@ def create_app(config_name=None):
     # Flask-Login
     login_manager.init_app(app)
     login_manager.login_view = 'auth.login'
-    login_manager.login_message = 'Veuillez vous connecter pour accéder à cette page.'
+    login_manager.login_message = 'Veuillez vous connecter pour accÃ©der Ã  cette page.'
     login_manager.login_message_category = 'info'
 
-    # Register blueprints
-    from app.routes import home, auth, qcm, chatbot
+    # Register blueprints (Controllers)
+    from app.controllers import home_bp, auth_bp, qcm_bp, chatbot_bp
 
-    app.register_blueprint(home.bp)
-    app.register_blueprint(auth.bp)
-    app.register_blueprint(qcm.bp)
-    app.register_blueprint(chatbot.bp)
+    app.register_blueprint(home_bp)
+    app.register_blueprint(auth_bp)
+    app.register_blueprint(qcm_bp)
+    app.register_blueprint(chatbot_bp)
 
     # Context processor pour les templates
     @app.context_processor

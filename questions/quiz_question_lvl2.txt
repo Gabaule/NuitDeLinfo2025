@@ -232,7 +232,8 @@
     {
       "id": 20,
       "question": "Comment le choix d'un logiciel peut-il impacter la durabilité du matériel ?",
-      { "id": "A", "text": "Les logiciels propriétaires récents exigent souvent des machines puissantes, poussant au renouvellement du matériel." },
+      "options": [
+        { "id": "A", "text": "Les logiciels propriétaires récents exigent souvent des machines puissantes, poussant au renouvellement du matériel." },
         { "id": "B", "text": "Les systèmes d'exploitation légers, comme certaines distributions Linux, peuvent prolonger la vie d'ordinateurs anciens." },
         { "id": "C", "text": "Les logiciels libres n'ont aucun impact sur la durabilité du matériel." },
         { "id": "D", "text": "Utiliser des logiciels en ligne (cloud computing) permet de ne plus avoir besoin d'un ordinateur." }

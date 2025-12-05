@@ -15,7 +15,7 @@ services:
     ports:
       - "${POSTGRES_PORT:-5432}:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-nuitinfo_user}"]
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-nuitinfo_user} -d ${POSTGRES_DB:-nuitinfo_db}" ]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -74,15 +74,13 @@ services:
     environment:
       PGPASSWORD: ${POSTGRES_PASSWORD:-nuitinfo_password}
     volumes:
-      - ./database/init:/seeds:ro
-    entrypoint: ["sh", "-c"]
-    command: [
-      "psql -h postgres -U ${POSTGRES_USER:-nuitinfo_user} -d ${POSTGRES_DB:-nuitinfo_db} -f /seeds/02-seed.sql"
-    ]
+      - ./db/init:/seeds:ro
+    entrypoint: [ "sh", "-c" ]
+    command: [ "psql -h postgres -U ${POSTGRES_USER:-nuitinfo_user} -d ${POSTGRES_DB:-nuitinfo_db} -f /seeds/02-seed.sql" ]
     networks:
       - nuitinfo_network
     restart: "no"
-    profiles: ["seed"]
+    profiles: [ "seed" ]
 
   ollama:
     image: ollama/ollama:latest
@@ -95,7 +93,7 @@ services:
     networks:
       - nuitinfo_network
     healthcheck:
-      test: ["CMD-SHELL", "ollama list || exit 1"]
+      test: [ "CMD-SHELL", "ollama list || exit 1" ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -109,7 +107,7 @@ services:
         condition: service_healthy
     environment:
       - OLLAMA_HOST=http://ollama:11434
-    entrypoint: ["/bin/sh", "-c"]
+    entrypoint: [ "/bin/sh", "-c" ]
     command:
       - |
         echo "🔍 Checking if tinyllama model exists..."

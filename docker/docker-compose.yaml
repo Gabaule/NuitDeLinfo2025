@@ -2,7 +2,7 @@ services:
   postgres-db:
     image: postgres:16-alpine
     environment:
-      POSTGRES_DB: TheNewCantina
+      POSTGRES_DB: TribordNuitInfo2025
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: password
       POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=fr_FR.UTF-8"

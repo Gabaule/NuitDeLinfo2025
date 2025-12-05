@@ -49,3 +49,8 @@ def index():
     return render_template('index.html',
                          quiz_levels=quiz_levels,
                          sample_question=sample_question)
+
+
+@home_bp.route('/retro')
+def retro():
+    return render_template('retro.html')

@@ -55,3 +55,6 @@ Thumbs.db
 # Docker volumes (optionnel)
 postgres_data/
 pgadmin_data/
+
+# Claude Code
+CLAUDE.md

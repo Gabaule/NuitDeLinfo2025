@@ -14,7 +14,7 @@ def create_app(config_class=Config):
     db.init_app(app)
 
     # Enregistrement des Blueprints
-    from .controllers.user_controller import user_bp
+    from .controller.user_controller import user_bp
     app.register_blueprint(user_bp, url_prefix='/api/users')
 
     # D'autres contrôleurs peuvent être enregistrés ici à l'avenir

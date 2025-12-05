@@ -2,3 +2,4 @@
 .token
 bin/
 docker-data/
+app/__pycache__

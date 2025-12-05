@@ -301,7 +301,7 @@
       "reponse_correcte": ["C", "D"]
     },
     {
-      "id": 1,
+      "id": 26,
       "question": "Qu'est-ce que le 'code source' d'un logiciel ?",
       "options": [
         { "id": "A", "text": "Le nom du créateur du logiciel." },
@@ -313,7 +313,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 2,
+      "id": 27,
       "question": "Parmi ces navigateurs web, lesquels sont open-source ?",
       "options": [
         { "id": "A", "text": "Mozilla Firefox" },
@@ -325,7 +325,7 @@
       "reponse_correcte": ["A", "D"]
     },
     {
-      "id": 3,
+      "id": 28,
       "question": "Qui est une figure emblématique du mouvement du logiciel libre, initiateur du projet GNU ?",
       "options": [
         { "id": "A", "text": "Bill Gates" },
@@ -337,7 +337,7 @@
       "reponse_correcte": ["C"]
     },
     {
-      "id": 4,
+      "id": 29,
       "question": "Quel est l'avantage pour une communauté de pouvoir accéder au code source d'un logiciel ?",
       "options": [
         { "id": "A", "text": "Cela permet de vérifier qu'il ne contient pas de fonction cachée qui t'espionne." },
@@ -349,7 +349,7 @@
       "reponse_correcte": ["A", "C"]
     },
     {
-      "id": 5,
+      "id": 30,
       "question": "L'expression 'Si c'est gratuit, c'est que vous êtes le produit' s'applique souvent aux services des GAFAM. Qu'est-ce que cela signifie ?",
       "options": [
         { "id": "A", "text": "Les services sont souvent selon les experts de très mauvaise qualité." },
@@ -361,7 +361,7 @@
       "reponse_correcte": ["D"]
     },
     {
-      "id": 6,
+      "id": 31,
       "question": "Qu'est-ce qu'un 'écosystème numérique' créé par un GAFAM ?",
       "options": [
         { "id": "A", "text": "Un groupe de discussion sur l'environnement rassemblant des programmeurs, des spécialites de la transition numérique et des utilisateurs." },
@@ -373,7 +373,7 @@
       "reponse_correcte": ["C"]
     },
     {
-      "id": 7,
+      "id": 32,
       "question": "Pour stocker tes fichiers en ligne, quelles sont les alternatives libres à Google Drive ou Microsoft OneDrive ?",
       "options": [
         { "id": "A", "text": "Nextcloud" },
@@ -385,7 +385,7 @@
       "reponse_correcte": ["A", "C", "D"]
     },
     {
-      "id": 8,
+      "id": 33,
       "question": "Qu'est-ce qu'un réseau social 'fédéré' comme Mastodon, alternative à Twitter (X) ?",
       "options": [
         { "id": "A", "text": "Un réseau composé de multiples serveurs indépendants qui peuvent communiquer entre eux." },
@@ -397,7 +397,7 @@
       "reponse_correcte": ["A"]
     },
     {
-      "id": 9,
+      "id": 34,
       "question": "Qui a créé le noyau (le cœur) de Linux ?",
       "options": [
         { "id": "A", "text": "Bill Gates" },
@@ -409,7 +409,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 10,
+      "id": 35,
       "question": "Quelle est la mascotte officielle de Linux ?",
       "options": [
         { "id": "A", "text": "Un renard nommé Foxy" },
@@ -421,7 +421,7 @@
       "reponse_correcte": ["D"]
     },
     {
-      "id": 11,
+      "id": 36,
       "question": "Pourquoi Linux est-il massivement utilisé pour faire fonctionner les serveurs web dans le monde ?",
       "options": [
         { "id": "A", "text": "Parce qu'il est le seul système d'exploitation capable de se connecter à Internet." },
@@ -433,7 +433,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 12,
+      "id": 37,
       "question": "Sur Linux, qu'est-ce qu'un 'environnement de bureau' ?",
       "options": [
         { "id": "A", "text": "Le nom de l'écran de l'ordinateur." },
@@ -445,7 +445,7 @@
       "reponse_correcte": ["C"]
     },
     {
-      "id": 13,
+      "id": 38,
       "question": "Qu'est-ce qu'un 'cookie' sur un site internet ?",
       "options": [
         { "id": "A", "text": "Un petit cadeau virtuel offert quand tu visites un site pour la première fois." },
@@ -457,7 +457,7 @@
       "reponse_correcte": ["C"]
     },
     {
-      "id": 14,
+      "id": 39,
       "question": "Qu'est-ce que le 'hameçonnage' (phishing) ?",
       "options": [
         { "id": "A", "text": "Une technique pour pêcher des poissons rares grâce à internet." },
@@ -469,7 +469,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 15,
+      "id": 40,
       "question": "À quoi sert un VPN (Réseau Privé Virtuel) ?",
       "options": [
         { "id": "A", "text": "À augmenter la vitesse de ta connexion internet." },
@@ -481,7 +481,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 16,
+      "id": 41,
       "question": "L'authentification à deux facteurs (2FA) est une mesure de sécurité qui consiste à...",
       "options": [
         { "id": "A", "text": "Utiliser deux mots de passe différents pour le même compte." },
@@ -493,7 +493,7 @@
       "reponse_correcte": ["C"]
     },
     {
-      "id": 17,
+      "id": 42,
       "question": "Dans la démarche NIRD, que signifie le concept de 'sobriété numérique' ?",
       "options": [
         { "id": "A", "text": "Ne plus jamais utiliser d'appareils numériques." },
@@ -505,7 +505,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 18,
+      "id": 43,
       "question": "En quoi l'utilisation de matériel informatique reconditionné s'inscrit-elle dans l'axe 'Durable' de la démarche NIRD ?",
       "options": [
         { "id": "A", "text": "Le matériel reconditionné est plus performant que le neuf." },
@@ -517,7 +517,7 @@
       "reponse_correcte": ["B", "C", "D"]
     },
     {
-      "id": 19,
+      "id": 44,
       "question": "Que cherche à combattre l'axe 'Inclusif' de la démarche NIRD ?",
       "options": [
         { "id": "A", "text": "L'utilisation excessive des réseaux sociaux." },
@@ -529,7 +529,7 @@
       "reponse_correcte": ["B", "C"]
     },
     {
-      "id": 20,
+      "id": 45,
       "question": "Comment le fait d'apprendre à coder avec des outils open-source comme Python ou Scratch correspond à l'axe 'Responsable' de la démarche NIRD ?",
       "options": [
         { "id": "A", "text": "Cela te donne les clés pour comprendre comment fonctionne le numérique, et ne plus être un simple consommateur." },
@@ -541,7 +541,7 @@
       "reponse_correcte": ["A", "C"]
     },
     {
-      "id": 21,
+      "id": 46,
       "question": "Qu'est-ce qu'un logiciel 'propriétaire' ?",
       "options": [
         { "id": "A", "text": "Un logiciel qui appartient à l'État." },
@@ -553,7 +553,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 22,
+      "id": 47,
       "question": "Pourquoi l'utilisation d'un Wi-Fi public (gare, aéroport, restaurant) peut-elle être risquée pour tes données personnelles ?",
       "options": [
         { "id": "A", "text": "La connexion est souvent très lente." },
@@ -565,7 +565,7 @@
       "reponse_correcte": ["B", "C"]
     },
     {
-      "id": 23,
+      "id": 48,
       "question": "Android, le système d'exploitation de la majorité des smartphones, est basé sur le noyau Linux. Est-ce que cela en fait un système totalement 'libre' et respectueux de la vie privée ?",
       "options": [
         { "id": "A", "text": "Oui, comme c'est basé sur Linux, c'est forcément un système ouvert et sûr." },
@@ -576,7 +576,7 @@
       "reponse_correcte": ["B", "C"]
     },
     {
-      "id": 24,
+      "id": 49,
       "question": "Quelle action concrète ton lycée pourrait-il mettre en place pour appliquer la démarche NIRD ?",
       "options": [
         { "id": "A", "text": "Remplacer tous les ordinateurs par des modèles neufs chaque année." },
@@ -589,7 +589,7 @@
       "reponse_correcte": ["B", "C", "E"]
     },
     {
-      "id": 25,
+      "id": 50,
       "question": "Quel est l'impact environnemental principal du visionnage de vidéos en streaming (YouTube, Netflix, etc.) ?",
       "options": [
         { "id": "A", "text": "Aucun, car tout est dématérialisé." },

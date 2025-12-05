@@ -301,7 +301,7 @@
       "reponse_correcte": ["C"]
     },
     {
-      "id": 1,
+      "id": 26,
       "question": "Quelle est la particularité principale de la licence 'Affero General Public License' (AGPL) par rapport à la licence GPL classique ?",
       "options": [
         { "id": "A", "text": "Elle est plus permissive et autorise l'intégration dans des projets propriétaires." },
@@ -313,7 +313,7 @@
       "reponse_correcte": ["C"]
     },
     {
-      "id": 2,
+      "id": 27,
       "question": "Qu'est-ce qu'un Contributor License Agreement (CLA) dans un projet open-source ?",
       "options": [
         { "id": "A", "text": "Un document qui garantit que le contributeur sera rémunéré pour son travail." },
@@ -325,7 +325,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 3,
+      "id": 28,
       "question": "Le modèle économique 'open core' est souvent utilisé par les entreprises de l'open source. En quoi consiste-t-il ?",
       "options": [
         { "id": "A", "text": "À fournir un logiciel entièrement libre, mais en faisant payer le support technique." },
@@ -337,7 +337,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 4,
+      "id": 29,
       "question": "Qu'est-ce qu'un 'data moat' (fossé de données) dans le contexte de l'avantage concurrentiel des GAFAM ?",
       "options": [
         { "id": "A", "text": "Une technique de chiffrement des données pour les protéger des cyberattaques." },
@@ -349,7 +349,7 @@
       "reponse_correcte": ["C"]
     },
     {
-      "id": 5,
+      "id": 30,
       "question": "Quel est le rôle du protocole ActivityPub dans l'écosystème du 'Fediverse' (Mastodon, PeerTube, etc.) ?",
       "options": [
         { "id": "A", "text": "C'est un protocole de chiffrement des communications." },
@@ -361,7 +361,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 6,
+      "id": 31,
       "question": "En quoi l'obligation d'interopérabilité, promue par des régulations comme le DMA, peut-elle réduire la domination des géants du numérique ?",
       "options": [
         { "id": "A", "text": "En forçant les GAFAM à utiliser les mêmes langages de programmation que leurs concurrents." },
@@ -373,7 +373,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 7,
+      "id": 32,
       "question": "Quelles sont les fonctions principales du 'scheduler' (ordonnanceur) du noyau Linux ?",
       "options": [
         { "id": "A", "text": "Gérer l'installation et la suppression des paquets logiciels." },
@@ -385,7 +385,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 8,
+      "id": 33,
       "question": "Quelle est la principale différence d'approche entre les modules de sécurité SELinux et AppArmor ?",
       "options": [
         { "id": "A", "text": "SELinux est basé sur l'étiquetage de chaque fichier et processus (label-based), tandis qu'AppArmor est basé sur les chemins de fichiers (path-based), ce qui le rend souvent plus simple à configurer." },
@@ -397,7 +397,7 @@
       "reponse_correcte": ["A"]
     },
     {
-      "id": 9,
+      "id": 34,
       "question": "Quelle est la principale innovation du protocole de serveur d'affichage Wayland par rapport à son prédécesseur X.Org (X11) ?",
       "options": [
         { "id": "A", "text": "Il est entièrement compatible avec les anciennes applications X11 sans aucune couche de traduction." },
@@ -409,7 +409,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 10,
+      "id": 35,
       "question": "Qu'est-ce qu'un système d'exploitation 'immuable' comme Fedora Silverblue ou openSUSE MicroOS ?",
       "options": [
         { "id": "A", "text": "Un système d'exploitation qui ne reçoit jamais de mises à jour." },
@@ -421,7 +421,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 11,
+      "id": 36,
       "question": "Comment la technique de 'browser fingerprinting' (empreinte de navigateur) permet-elle de pister un utilisateur sans utiliser de cookies ?",
       "options": [
         { "id": "A", "text": "En accédant à l'historique de navigation de l'utilisateur." },
@@ -433,7 +433,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 12,
+      "id": 37,
       "question": "Quel est le principe du chiffrement homomorphe, considéré comme une avancée majeure pour la protection de la vie privée dans le cloud ?",
       "options": [
         { "id": "A", "text": "C'est une méthode pour chiffrer les données de manière à ce qu'elles ne puissent être déchiffrées que par l'intelligence artificielle." },
@@ -445,7 +445,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 13,
+      "id": 38,
       "question": "Qu'est-ce qu'une 'preuve à divulgation nulle de connaissance' (Zero-Knowledge Proof - ZKP) ?",
       "options": [
         { "id": "A", "text": "Un système où un utilisateur peut prouver qu'il détient une information (ex: un mot de passe) sans révéler l'information elle-même." },
@@ -457,7 +457,7 @@
       "reponse_correcte": ["A"]
     },
     {
-      "id": 14,
+      "id": 39,
       "question": "Quel est le principal enjeu de vie privée lié à l'utilisation du protocole DNS-over-HTTPS (DoH) ?",
       "options": [
         { "id": "A", "text": "DoH n'est pas chiffré, ce qui rend les requêtes DNS visibles par tout le monde." },
@@ -469,7 +469,7 @@
       "reponse_correcte": ["C"]
     },
     {
-      "id": 15,
+      "id": 40,
       "question": "Qu'est-ce que la 'fatigue du consentement' (consent fatigue) en lien avec le RGPD ?",
       "options": [
         { "id": "A", "text": "Un état de lassitude des entreprises face à la complexité du RGPD." },
@@ -481,7 +481,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 16,
+      "id": 41,
       "question": "Quelle est la différence fondamentale entre les approches 'Green IT' (ou 'informatique verte') et 'IT Sobriety' (ou 'sobriété numérique') ?",
       "options": [
         { "id": "A", "text": "Il n'y a aucune différence, ce sont des synonymes." },
@@ -493,7 +493,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 17,
+      "id": 42,
       "question": "Comment l'obsolescence logicielle (ex: fin du support d'un OS, non-compatibilité avec de nouvelles applications) contribue-t-elle à l'impact environnemental du numérique ?",
       "options": [
         { "id": "A", "text": "Elle n'a aucun impact, car le logiciel est immatériel." },
@@ -505,7 +505,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 18,
+      "id": 43,
       "question": "Les Web Content Accessibility Guidelines (WCAG) sont un standard international pour l'accessibilité numérique. Quel en est l'objectif principal ?",
       "options": [
         { "id": "A", "text": "Rendre les sites web plus rapides à charger." },
@@ -517,7 +517,7 @@
       "reponse_correcte": ["C"]
     },
     {
-      "id": 19,
+      "id": 44,
       "question": "Quel est l'un des principaux défis dans l'évaluation de l'impact environnemental de l'entraînement de grands modèles d'IA (LLM) ?",
       "options": [
         { "id": "A", "text": "L'entraînement de ces modèles ne consomme que très peu d'énergie." },
@@ -529,7 +529,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 20,
+      "id": 45,
       "question": "En quoi le concept de 'low-tech' appliqué au numérique peut-il être une réponse aux enjeux de la démarche NIRD ?",
       "options": [
         { "id": "A", "text": "En favorisant des technologies plus simples, plus robustes et réparables, il répond aux objectifs de durabilité (moins de déchets) et d'inclusion (technologies moins chères et plus accessibles)." },
@@ -541,7 +541,7 @@
       "reponse_correcte": ["A"]
     },
     {
-      "id": 21,
+      "id": 46,
       "question": "Qu'est-ce que le 'dual-licensing' (double licence) comme stratégie commerciale pour un logiciel open-source ?",
       "options": [
         { "id": "A", "text": "Distribuer le logiciel sous deux licences open-source différentes pour laisser le choix à l'utilisateur." },
@@ -553,7 +553,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 22,
+      "id": 47,
       "question": "Le cas 'États-Unis contre Microsoft' à la fin des années 1990 portait principalement sur...",
       "options": [
         { "id": "A", "text": "La violation de la vie privée des utilisateurs de Windows." },
@@ -565,7 +565,7 @@
       "reponse_correcte": ["C"]
     },
     {
-      "id": 23,
+      "id": 48,
       "question": "Qu'est-ce qu'un 'gestionnaire de paquets' (ex: APT pour Debian/Ubuntu, YUM/DNF pour Fedora/RHEL) dans un système Linux ?",
       "options": [
         { "id": "A", "text": "Un outil qui compresse les fichiers pour économiser de l'espace disque." },
@@ -577,7 +577,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 24,
+      "id": 49,
       "question": "La 'portabilité des données', un droit garanti par le RGPD, vise à contrer l'enfermement propriétaire en permettant à un utilisateur...",
       "options": [
         { "id": "A", "text": "De supprimer toutes ses données d'un service." },
@@ -589,7 +589,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 25,
+      "id": 50,
       "question": "Pourquoi la réparation et le reconditionnement sont-ils des piliers essentiels d'un numérique durable (démarche NIRD) ?",
       "options": [
         { "id": "A", "text": "Parce qu'ils permettent de créer des emplois dans le secteur de la technologie." },

@@ -302,7 +302,7 @@
       "reponse_correcte": ["B"]
     },
         {
-      "id": 1,
+      "id": 26,
       "question": "Quelle est la principale différence entre une licence open-source 'permissive' (comme MIT ou Apache) et une licence 'copyleft' (comme la GNU GPL) ?",
       "options": [
         { "id": "A", "text": "Les licences permissives sont payantes, les licences copyleft sont gratuites." },
@@ -314,7 +314,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 2,
+      "id": 27,
       "question": "Qu'est-ce qu'un 'format ouvert' (par exemple ODT pour le texte ou FLAC pour l'audio) ?",
       "options": [
         { "id": "A", "text": "Un format de fichier qui ne peut être lu que par des logiciels open-source." },
@@ -326,7 +326,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 3,
+      "id": 28,
       "question": "Quel est le rôle principal d'une fondation comme la 'Apache Software Foundation' ou la 'Linux Foundation' ?",
       "options": [
         { "id": "A", "text": "Vendre des logiciels et des services basés sur des projets open-source." },
@@ -338,7 +338,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 4,
+      "id": 29,
       "question": "Le terme 'écosystème fermé' ou 'walled garden' est souvent utilisé pour critiquer les GAFAM. Qu'est-ce que cela signifie ?",
       "options": [
         { "id": "A", "text": "Un système où la sécurité est si forte que les virus ne peuvent pas entrer." },
@@ -350,7 +350,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 5,
+      "id": 30,
       "question": "Quelle est la finalité principale du 'Digital Markets Act' (DMA) de l'Union Européenne ?",
       "options": [
         { "id": "A", "text": "Créer une taxe sur tous les produits numériques vendus en Europe." },
@@ -362,7 +362,7 @@
       "reponse_correcte": ["D"]
     },
     {
-      "id": 6,
+      "id": 31,
       "question": "Quelles sont les alternatives 'libres' et auto-hébergeables à des services comme Google Drive ou Microsoft 365 ?",
       "options": [
         { "id": "A", "text": "Dropbox" },
@@ -375,7 +375,7 @@
       "reponse_correcte": ["B", "D"]
     },
     {
-      "id": 7,
+      "id": 32,
       "question": "Qu'est-ce qu'un 'dark pattern' sur un site web ou une application ?",
       "options": [
         { "id": "A", "text": "Un mode d'affichage sombre pour économiser la batterie." },
@@ -387,7 +387,7 @@
       "reponse_correcte": ["C"]
     },
     {
-      "id": 8,
+      "id": 33,
       "question": "Sous Linux, qu'est-ce qu'un 'environnement de bureau' (Desktop Environment) ?",
       "options": [
         { "id": "A", "text": "Le nom de la version du noyau Linux." },
@@ -399,7 +399,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 9,
+      "id": 34,
       "question": "Pourquoi la ligne de commande (terminal) est-elle si importante et puissante sous Linux ?",
       "options": [
         { "id": "A", "text": "Parce qu'il n'existe pas d'interface graphique pour la plupart des tâches." },
@@ -411,7 +411,7 @@
       "reponse_correcte": ["B", "C", "D"]
     },
     {
-      "id": 10,
+      "id": 35,
       "question": "Qu'est-ce qu'un 'gestionnaire de paquets' (comme APT, DNF ou Pacman) sous Linux ?",
       "options": [
         { "id": "A", "text": "Un service de livraison de colis pour les produits Linux." },
@@ -423,7 +423,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 11,
+      "id": 36,
       "question": "Pourquoi une distribution comme Kali Linux est-elle particulièrement utilisée dans le domaine de la cybersécurité ?",
       "options": [
         { "id": "A", "text": "Car elle est visuellement plus belle que les autres distributions." },
@@ -435,7 +435,7 @@
       "reponse_correcte": ["C"]
     },
     {
-      "id": 12,
+      "id": 37,
       "question": "Qu'est-ce que l''empreinte digitale du navigateur' (browser fingerprinting) ?",
       "options": [
         { "id": "A", "text": "L'utilisation de son empreinte digitale pour déverrouiller le navigateur." },
@@ -447,7 +447,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 13,
+      "id": 38,
       "question": "Quelle est la différence entre l'anonymat et le pseudonymat en ligne ?",
       "options": [
         { "id": "A", "text": "Il n'y a aucune différence, les deux termes sont interchangeables." },
@@ -459,7 +459,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 14,
+      "id": 39,
       "question": "Que sont les 'métadonnées' d'une photo numérique que vous postez en ligne ?",
       "options": [
         { "id": "A", "text": "Les pixels qui composent l'image." },
@@ -471,7 +471,7 @@
       "reponse_correcte": ["C"]
     },
     {
-      "id": 15,
+      "id": 40,
       "question": "En quoi le protocole 'DNS over HTTPS' (DoH) améliore-t-il la protection de la vie privée ?",
       "options": [
         { "id": "A", "text": "Il rend la connexion internet plus rapide." },
@@ -483,7 +483,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 16,
+      "id": 41,
       "question": "Dans la démarche NIRD, à quoi fait référence le concept de 'communs numériques' ?",
       "options": [
         { "id": "A", "text": "Les ordinateurs partagés dans une salle de classe." },
@@ -495,7 +495,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 17,
+      "id": 42,
       "question": "Quel est l'un des principaux impacts environnementaux des data centers ?",
       "options": [
         { "id": "A", "text": "La pollution sonore pour les riverains." },
@@ -507,7 +507,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 18,
+      "id": 43,
       "question": "La démarche 'low-tech' appliquée au numérique durable consiste à...",
       "options": [
         { "id": "A", "text": "Revenir à des technologies d'avant l'invention d'internet." },
@@ -519,7 +519,7 @@
       "reponse_correcte": ["C"]
     },
     {
-      "id": 19,
+      "id": 44,
       "question": "Que signifie rendre un site web 'accessible' dans le pilier 'Numérique Inclusif' de la démarche NIRD ?",
       "options": [
         { "id": "A", "text": "Qu'il soit disponible dans toutes les langues." },
@@ -531,7 +531,7 @@
       "reponse_correcte": ["C"]
     },
     {
-      "id": 20,
+      "id": 45,
       "question": "Comment le choix d'un service de streaming vidéo peut-il être lié à un numérique plus responsable ?",
       "options": [
         { "id": "A", "text": "En choisissant une plateforme qui finance la plantation d'arbres." },
@@ -543,7 +543,7 @@
       "reponse_correcte": ["A", "B", "C"]
     },
     {
-      "id": 21,
+      "id": 46,
       "question": "Qui est le créateur initial du noyau Linux ?",
       "options": [
         { "id": "A", "text": "Richard Stallman" },
@@ -555,7 +555,7 @@
       "reponse_correcte": ["D"]
     },
     {
-      "id": 22,
+      "id": 47,
       "question": "Le principe de 'minimisation des données', inscrit dans le RGPD, implique que...",
       "options": [
         { "id": "A", "text": "Les entreprises doivent compresser les données pour qu'elles prennent moins de place." },
@@ -567,7 +567,7 @@
       "reponse_correcte": ["B"]
     },
     {
-      "id": 23,
+      "id": 48,
       "question": "Lequel de ces services n'appartient PAS à Meta (anciennement Facebook) ?",
       "options": [
         { "id": "A", "text": "Instagram" },
@@ -579,7 +579,7 @@
       "reponse_correcte": ["C"]
     },
     {
-      "id": 24,
+      "id": 49,
       "question": "Parmi ces actions, lesquelles relèvent de la 'sobriété numérique' ?",
       "options": [
         { "id": "A", "text": "Désactiver la lecture automatique des vidéos sur les réseaux sociaux." },
@@ -592,7 +592,7 @@
       "reponse_correcte": ["A", "C", "D"]
     },
     {
-      "id": 25,
+      "id": 50,
       "question": "Quel est le modèle animal et le nom de la mascotte officielle de Linux ?",
       "options": [
         { "id": "A", "text": "Un gnou nommé 'Gnu'." },

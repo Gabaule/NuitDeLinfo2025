@@ -8,11 +8,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const answers = document.querySelectorAll('.answer');
-  answers.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      answers.forEach((other) => other.classList.remove('active'));
-      btn.classList.add('active');
-    });
-  });
+
 });

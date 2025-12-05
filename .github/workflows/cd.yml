@@ -29,8 +29,7 @@ jobs:
       # 2) Mettre le nom du repo (owner/repo) en lowercase pour GHCR
       - name: Normalize repo name to lowercase
         id: vars_repo
-      run: |
-          echo "IMAGE_NAME=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+        run: echo "IMAGE_NAME=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
 
       # 3) Définir les tags
       #    - toujours un tag date-heure-branche

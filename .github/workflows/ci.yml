@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - "*"        # toutes les branches...
+      - "!main"    # ...sauf main
+      - "!prod"    # ...et prod
+  pull_request:
+    branches:
+      - main
+      - prod
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f docker/requirements.txt ]; then pip install -r docker/requirements.txt; fi
+
+      - name: Run tests
+        run: |
+          if [ -d tests ]; then pytest; else echo "No tests configured"; fi
+
+      - name: Build Docker image (check)
+        run: |
+          docker build \
+            -f docker/Dockerfile \
+            -t python-app-ci \
+            .

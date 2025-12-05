@@ -1,0 +1,94 @@
+name: CD - Build & Push Docker image
+
+on:
+  push:
+    branches:
+      - main
+      - prod
+      - clementDS   # branche de test CD
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write   # nécessaire pour pousser sur GHCR
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      # 1) LOGIN à GitHub Container Registry
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+
+      # 2) Mettre le nom du repo (owner/repo) en lowercase pour GHCR
+      - name: Normalize repo name to lowercase
+        id: vars_repo
+        run: echo "IMAGE_NAME=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+
+      # 3) Définir les tags
+      #    - toujours un tag date-heure-branche
+      #    - tag latest UNIQUEMENT si branche = prod
+      - name: Set image tags
+        id: tags
+        run: |
+          DATE_PART=$(date -u +"%Y%m%d-%H%M%S")
+          BRANCH_LOWER=$(echo '${{ github.ref_name }}' | tr '[:upper:]' '[:lower:]')
+          DATE_TAG="${DATE_PART}-${BRANCH_LOWER}"
+
+          echo "DATE_TAG=$DATE_TAG" >> $GITHUB_OUTPUT
+
+          # latest seulement pour la branche prod
+          if [ "${{ github.ref_name }}" = "prod" ]; then
+            echo "BASE_TAG=latest" >> $GITHUB_OUTPUT
+          fi
+
+          echo "Date tag: $DATE_TAG"
+          if [ "${{ github.ref_name }}" = "prod" ]; then
+            echo "Base tag: latest"
+          else
+            echo "Base tag: (none, only date-tag)"
+          fi
+
+      # 4) Build de l'image Docker
+      - name: Build Docker image
+        run: |
+          IMAGE="ghcr.io/${{ steps.vars_repo.outputs.IMAGE_NAME }}"
+          DATE_TAG="${{ steps.tags.outputs.DATE_TAG }}"
+          BASE_TAG="${{ steps.tags.outputs.BASE_TAG }}"
+
+          if [ -n "$BASE_TAG" ]; then
+            echo "Building with tags: $BASE_TAG and $DATE_TAG"
+            docker build \
+              -f docker/Dockerfile \
+              -t $IMAGE:$BASE_TAG \
+              -t $IMAGE:$DATE_TAG \
+              .
+          else
+            echo "Building with tag: $DATE_TAG"
+            docker build \
+              -f docker/Dockerfile \
+              -t $IMAGE:$DATE_TAG \
+              .
+          fi
+
+      # 5) Push de l'image vers GHCR
+      - name: Push Docker image
+        run: |
+          IMAGE="ghcr.io/${{ steps.vars_repo.outputs.IMAGE_NAME }}"
+          DATE_TAG="${{ steps.tags.outputs.DATE_TAG }}"
+          BASE_TAG="${{ steps.tags.outputs.BASE_TAG }}"
+
+          if [ -n "$BASE_TAG" ]; then
+            echo "Pushing tags: $BASE_TAG and $DATE_TAG"
+            docker push $IMAGE:$BASE_TAG
+            docker push $IMAGE:$DATE_TAG
+          else
+            echo "Pushing tag: $DATE_TAG"
+            docker push $IMAGE:$DATE_TAG
+          fi

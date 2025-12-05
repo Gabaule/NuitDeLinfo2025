@@ -6,7 +6,7 @@ from app.models import db, ChatbotConversation, ChatbotMessage
 import sys
 import os
 
-# Ajouter le répertoire parent au path pour importer ollama_client
+# Ajouter le rÃ©pertoire parent au path pour importer ollama_client
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from ollama_client import OllamaClient
 
@@ -21,17 +21,17 @@ def chat():
     Accepte un JSON avec:
     - message: le message de l'utilisateur
     - conversation_id: (optionnel) ID de conversation existante
-    - context: (optionnel) contexte des questions en cours pour réponse contextuelle
+    - context: (optionnel) contexte des questions en cours pour rÃ©ponse contextuelle
     """
     data = request.get_json()
     user_message = data.get('message', '')
     conversation_id = data.get('conversation_id')
-    context = data.get('context', {})  # {'theme': 'Océans', 'question_text': '...'}
+    context = data.get('context', {})  # {'theme': 'OcÃ©ans', 'question_text': '...'}
 
     if not user_message:
         return jsonify({'error': 'Message requis'}), 400
 
-    # Récupérer ou créer une conversation
+    # RÃ©cupÃ©rer ou crÃ©er une conversation
     if conversation_id:
         conversation = ChatbotConversation.query.get(conversation_id)
         if not conversation or conversation.user_id != current_user.id:
@@ -54,19 +54,19 @@ def chat():
     db.session.add(user_msg)
     db.session.commit()
 
-    # Préparer le contexte pour Ollama
+    # PrÃ©parer le contexte pour Ollama
     ollama_client = OllamaClient(base_url=current_app.config['OLLAMA_BASE_URL'])
     model = current_app.config['OLLAMA_MODEL']
 
     # Construire l'historique des messages
     messages = []
 
-    # Ajouter un message système avec le contexte si fourni
+    # Ajouter un message systÃ¨me avec le contexte si fourni
     if context:
-        system_prompt = "Tu es ShadyGPT, un assistant IA pour aider les utilisateurs pendant un quiz sur les océans et l'open source."
+        system_prompt = "Tu es ShadyGPT, un assistant IA pour aider les utilisateurs pendant un quiz sur les ocÃ©ans et l'open source."
 
         if context.get('theme'):
-            system_prompt += f"\n\nContexte actuel: L'utilisateur répond à des questions sur le thème '{context['theme']}'."
+            system_prompt += f"\n\nContexte actuel: L'utilisateur rÃ©pond Ã  des questions sur le thÃ¨me '{context['theme']}'."
 
         if context.get('question_text'):
             system_prompt += f"\n\nQuestion en cours: {context['question_text']}"
@@ -98,7 +98,7 @@ def chat():
         response = ollama_client.chat(model, messages, stream=False)
         assistant_message = response['message']['content']
 
-        # Sauvegarder la réponse
+        # Sauvegarder la rÃ©ponse
         assistant_msg = ChatbotMessage(
             conversation_id=conversation.id,
             role='assistant',
@@ -122,7 +122,7 @@ def chat():
 @chatbot_bp.route('/stream', methods=['POST'])
 @login_required
 def chat_stream():
-    """Version streaming du chatbot (pour réponses en temps réel)"""
+    """Version streaming du chatbot (pour rÃ©ponses en temps rÃ©el)"""
     data = request.get_json()
     user_message = data.get('message', '')
     conversation_id = data.get('conversation_id')
@@ -131,7 +131,7 @@ def chat_stream():
     if not user_message:
         return jsonify({'error': 'Message requis'}), 400
 
-    # Même logique que chat() mais avec streaming
+    # MÃªme logique que chat() mais avec streaming
     if conversation_id:
         conversation = ChatbotConversation.query.get(conversation_id)
         if not conversation or conversation.user_id != current_user.id:
@@ -155,13 +155,13 @@ def chat_stream():
     ollama_client = OllamaClient(base_url=current_app.config['OLLAMA_BASE_URL'])
     model = current_app.config['OLLAMA_MODEL']
 
-    # Construire messages (même logique)
+    # Construire messages (mÃªme logique)
     messages = []
 
     if context:
         system_prompt = "Tu es ShadyGPT, un assistant IA pour aider les utilisateurs pendant un quiz."
         if context.get('theme'):
-            system_prompt += f"\n\nThème: {context['theme']}"
+            system_prompt += f"\n\nThÃ¨me: {context['theme']}"
         if context.get('question_text'):
             system_prompt += f"\nQuestion: {context['question_text']}"
 
@@ -170,7 +170,7 @@ def chat_stream():
     messages.append({'role': 'user', 'content': user_message})
 
     def generate():
-        """Générateur pour le streaming SSE"""
+        """GÃ©nÃ©rateur pour le streaming SSE"""
         full_response = ""
         try:
             for chunk in ollama_client.chat(model, messages, stream=True):
@@ -179,7 +179,7 @@ def chat_stream():
                     full_response += token
                     yield f"data: {token}\n\n"
 
-            # Sauvegarder la réponse complète
+            # Sauvegarder la rÃ©ponse complÃ¨te
             assistant_msg = ChatbotMessage(
                 conversation_id=conversation.id,
                 role='assistant',

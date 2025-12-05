@@ -12,29 +12,29 @@ qcm_bp = Blueprint('qcm', __name__, url_prefix='/qcm')
 @qcm_bp.route('/')
 @login_required
 def select_difficulty():
-    """Page de sélection de la difficulté"""
+    """Page de sÃ©lection de la difficultÃ©"""
     return render_template('qcm_select.html')
 
 
 @qcm_bp.route('/<difficulty>/start')
 @login_required
 def start_quiz(difficulty):
-    """Démarrer un nouveau quiz avec une difficulté donnée"""
+    """DÃ©marrer un nouveau quiz avec une difficultÃ© donnÃ©e"""
     if difficulty not in ['facile', 'moyen', 'difficile']:
-        flash('Difficulté invalide', 'danger')
+        flash('DifficultÃ© invalide', 'danger')
         return redirect(url_for('qcm.select_difficulty'))
 
-    # Récupérer 30 questions aléatoires de cette difficulté
+    # RÃ©cupÃ©rer 30 questions alÃ©atoires de cette difficultÃ©
     questions = Question.query.filter_by(difficulty=difficulty).all()
 
     if len(questions) < 30:
         flash(f'Pas assez de questions disponibles pour le niveau {difficulty}', 'warning')
         return redirect(url_for('qcm.select_difficulty'))
 
-    # Sélection aléatoire de 30 questions
+    # SÃ©lection alÃ©atoire de 30 questions
     selected_questions = random.sample(questions, 30)
 
-    # Créer une nouvelle session
+    # CrÃ©er une nouvelle session
     session = QcmSession(
         user_id=current_user.id,
         difficulty=difficulty,
@@ -45,7 +45,7 @@ def start_quiz(difficulty):
     db.session.add(session)
     db.session.flush()  # Pour obtenir l'ID de la session
 
-    # Ajouter les questions à la session
+    # Ajouter les questions Ã  la session
     for i, question in enumerate(selected_questions, start=1):
         session_question = QcmSessionQuestion(
             session_id=session.id,
@@ -63,19 +63,19 @@ def start_quiz(difficulty):
 @qcm_bp.route('/<uuid:session_id>/question/<int:num>')
 @login_required
 def question(session_id, num):
-    """Afficher une question spécifique"""
+    """Afficher une question spÃ©cifique"""
     session = QcmSession.query.get_or_404(session_id)
 
-    # Vérifier que c'est bien la session de l'utilisateur
+    # VÃ©rifier que c'est bien la session de l'utilisateur
     if session.user_id != current_user.id:
         flash('Session invalide', 'danger')
         return redirect(url_for('qcm.select_difficulty'))
 
     if num < 1 or num > 30:
-        flash('Numéro de question invalide', 'danger')
+        flash('NumÃ©ro de question invalide', 'danger')
         return redirect(url_for('qcm.question', session_id=session_id, num=1))
 
-    # Récupérer la question
+    # RÃ©cupÃ©rer la question
     session_question = QcmSessionQuestion.query.filter_by(
         session_id=session_id,
         question_order=num
@@ -83,7 +83,7 @@ def question(session_id, num):
 
     question_data = session_question.question
 
-    # Récupérer la réponse existante si elle existe
+    # RÃ©cupÃ©rer la rÃ©ponse existante si elle existe
     existing_answer = UserAnswer.query.filter_by(
         session_question_id=session_question.id
     ).first()
@@ -99,7 +99,7 @@ def question(session_id, num):
 @qcm_bp.route('/<uuid:session_id>/answer', methods=['POST'])
 @login_required
 def submit_answer(session_id):
-    """Enregistrer une réponse"""
+    """Enregistrer une rÃ©ponse"""
     session = QcmSession.query.get_or_404(session_id)
 
     if session.user_id != current_user.id:
@@ -114,14 +114,14 @@ def submit_answer(session_id):
         question_order=question_num
     ).first_or_404()
 
-    # Supprimer l'ancienne réponse si elle existe
+    # Supprimer l'ancienne rÃ©ponse si elle existe
     UserAnswer.query.filter_by(session_question_id=session_question.id).delete()
 
-    # Enregistrer la nouvelle réponse
+    # Enregistrer la nouvelle rÃ©ponse
     question = session_question.question
 
     if question.question_type == 'multiple_choice':
-        # Réponse à choix multiple
+        # RÃ©ponse Ã  choix multiple
         choice_ids = answer_data if isinstance(answer_data, list) else [answer_data]
 
         score = 0
@@ -144,9 +144,9 @@ def submit_answer(session_id):
         session_question.question_score = max(0, score)  # Score minimum 0
 
     else:
-        # Réponse texte
+        # RÃ©ponse texte
         text_answer = answer_data
-        # Comparaison simple (à améliorer)
+        # Comparaison simple (Ã  amÃ©liorer)
         is_correct = text_answer.strip().lower() == question.text_answer.correct_answer.strip().lower()
 
         answer = UserAnswer(
@@ -188,7 +188,7 @@ def complete_quiz(session_id):
 @qcm_bp.route('/<uuid:session_id>/results')
 @login_required
 def results(session_id):
-    """Afficher les résultats du quiz"""
+    """Afficher les rÃ©sultats du quiz"""
     session = QcmSession.query.get_or_404(session_id)
 
     if session.user_id != current_user.id:

@@ -8,52 +8,8 @@
         <h1>Bienvenue sur le portail NIRD</h1>
         <p>Notre objectif : montrer que notre avenir n'est pas voué à dépendre des GAFAMs. Découvre, apprends, teste tes connaissances.</p>
         <div class="cta-row">
-            <a class="btn primary" href="#about-nird">Découvrir le NIRD</a>
-            <a class="btn secondary" href="#quizzes">Testez vos connaissances</a>
-        </div>
-    </div>
-</section>
-
-<section class="section" id="quizzes">
-    <div class="section-head">
-        <h2>Les logiciels open source, et l'open source en général</h2>
-        <p>Choisissez la difficulté… et prouvez vos connaissances en NIRD !</p>
-    </div>
-    <div class="quiz-list">
-        {% for quiz in quiz_levels %}
-        <article class="quiz-card">
-            <div class="quiz-icon quiz-icon-{{ quiz.color }}" aria-hidden="true"></div>
-            <div class="quiz-body">
-                <div class="quiz-title">{{ quiz.title }}</div>
-                <div class="quiz-desc">{{ quiz.description }}</div>
-                <span class="chip">{{ quiz.badge }}</span>
-            </div>
-            <a href="{{ url_for('qcm.start_quiz', difficulty=quiz.difficulty) }}" class="play-btn" aria-label="Lancer le quiz {{ quiz.title }}">▶</a>
-        </article>
-        {% endfor %}
-    </div>
-</section>
-
-<section class="section alt" id="question">
-    <div class="section-head">
-        <h2>{{ sample_question.title }}</h2>
-        <p>{{ sample_question.subtitle }}</p>
-    </div>
-    <div class="question-card">
-        <div class="question-meta">
-            <span class="badge success">Une seule réponse</span>
-            <span class="hint">Indice : {{ sample_question.hint }}</span>
-        </div>
-        <div class="answers-grid">
-            {% for answer in sample_question.answers %}
-            <button class="answer {{ 'active' if answer.active else '' }}">
-                <span class="pill">{{ answer.number }}</span>
-                <span>{{ answer.label }}</span>
-            </button>
-            {% endfor %}
-        </div>
-        <div class="question-actions">
-            <button class="btn primary">Valider</button>
+            <a class="btn primary" href="https://nird.forge.apps.education.fr/">Découvrir le NIRD</a>
+            <a class="btn secondary" href="qcm">Testez vos connaissances</a>
         </div>
     </div>
 </section>

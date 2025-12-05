@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Cadran relou rotatif - correctif</title>
+<style>
+  body{background:#e3f4ff;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
+  .wrap{width:360px;text-align:center;background:#fff;padding:40px;border-radius:20px;box-shadow:0 4px 15px rgba(0,0,0,.1);}
+  input{width:100%;padding:10px;font-size:16px;margin-bottom:8px;border:1px solid #ccc;border-radius:6px;}
+  #clearBtn{width:100%;padding:8px 10px;margin-bottom:14px;border-radius:6px;border:1px solid #bbb;background:#f5f5f5;cursor:pointer}
+  .cadran-viewport{width:320px;height:320px;margin:0 auto;position:relative;}
+  .cadran{width:280px;height:280px;border-radius:50%;background:#3a3a3a;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(0deg);transition:transform 0.4s cubic-bezier(.2,.9,.3,1);}
+  .digit{position:absolute;width:56px;height:56px;border-radius:50%;background:#e6e6e6;display:flex;align-items:center;justify-content:center;font-weight:bold;box-shadow:0 4px 10px rgba(0,0,0,.2);user-select:none;touch-action:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <input type="text" id="tel" placeholder="Numéro" value="">
+  <button type="button" id="clearBtn" style="margin-bottom:10px">Vider</button>
+  <button type="button" id="submitBtn" style="width:100%;padding:10px;margin-bottom:20px;border-radius:25px;border:none;background:#1aa7ff;color:#fff;cursor:pointer;font-size:16px;">Submit</button>
+  <div class="cadran-viewport">
+    <div id="cadran" class="cadran" aria-hidden="false"></div>
+  </div>
+</div>
+<script>
+(() => {
+  const cadran = document.getElementById('cadran');
+  const tel = document.getElementById('tel');
+  const clearBtn = document.getElementById('clearBtn');
+
+  tel.value = '';
+
+  clearBtn.addEventListener('click', () => { tel.value = ''; });
+
+  const digits = ['1','2','3','4','5','6','7','8','9','0'];
+  const r = 110;
+  const cx = 140;
+  const cy = 140;
+
+  digits.forEach((d,i) => {
+    const el = document.createElement('div');
+    el.className = 'digit';
+    el.textContent = d;
+    const angle = (-90 + i * (360/digits.length)) * Math.PI/180;
+    el.style.left = (cx + Math.cos(angle)*r - 28) + 'px';
+    el.style.top  = (cy + Math.sin(angle)*r - 28) + 'px';
+    el.dataset.value = d;
+    cadran.appendChild(el);
+  });
+
+  let dragging = false;
+  let startX = 0;
+  let baseAngle = 0;
+  let currentAngle = 0;
+  let pendingDigit = null;
+
+  function applyRotation(angle, animate=false){
+    if(animate) cadran.style.transition = 'transform 0.4s cubic-bezier(.2,.9,.3,1)';
+    else cadran.style.transition = 'none';
+    cadran.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+  }
+
+
+  cadran.addEventListener('pointerdown', (ev) => {
+    const btn = ev.target.closest('.digit');
+    if(!btn) return;
+
+    ev.preventDefault();
+
+    pendingDigit = btn.dataset.value;
+
+    dragging = true;
+    startX = ev.clientX;
+    baseAngle = currentAngle;
+
+    try{ ev.target.setPointerCapture(ev.pointerId); } catch(e){}
+  });
+
+  cadran.addEventListener('pointermove', (ev) => {
+    if(!dragging) return;
+
+    const dx = ev.clientX - startX;
+    currentAngle = baseAngle + dx * 0.4;
+    applyRotation(currentAngle, false);
+  });
+
+  function endDrag(ev){
+    if(!dragging) return;
+    dragging = false;
+    currentAngle = 0;
+    applyRotation(0, true);
+
+    if(pendingDigit){
+      tel.value += pendingDigit;
+      pendingDigit = null;
+    }
+
+    try{ ev.target.releasePointerCapture(ev.pointerId); } catch(e){}
+  }
+
+  cadran.addEventListener('pointerup', endDrag);
+  cadran.addEventListener('pointercancel', endDrag);
+
+  document.addEventListener('selectstart', (e) => { if(dragging) e.preventDefault(); });
+
+})();
+document.getElementById('submitBtn').onclick = ()=>{ alert('Submit (bientôt)'); };
+</script>
+</body>
+</html>

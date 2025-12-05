@@ -1,0 +1,304 @@
+{
+  "questionnaire": [
+    {
+      "id": 1,
+      "question": "Quelle est la principale caractéristique d'une licence 'copyleft' comme la GNU GPL (General Public License) ?",
+      "options": [
+        { "id": "A", "text": "Elle permet d'intégrer le code dans un logiciel propriétaire sans aucune restriction." },
+        { "id": "B", "text": "Elle oblige toute modification ou œuvre dérivée à être distribuée sous les mêmes conditions de liberté." },
+        { "id": "C", "text": "Elle autorise uniquement l'utilisation non commerciale du logiciel." },
+        { "id": "D", "text": "Elle a été développée par Apple pour contrer l'open source." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 2,
+      "question": "Parmi ces affirmations, lesquelles distinguent le mouvement du 'Logiciel Libre' de celui de l''Open Source' ?",
+      "options": [
+        { "id": "A", "text": "Le 'Logiciel Libre' est une philosophie axée sur les libertés éthiques de l'utilisateur." },
+        { "id": "B", "text": "L''Open Source' est une méthodologie de développement qui met en avant les bénéfices pratiques (qualité, sécurité)." },
+        { "id": "C", "text": "Les logiciels Open Source ne sont jamais libres." },
+        { "id": "D", "text": "Les logiciels libres sont toujours gratuits, contrairement aux logiciels Open Source." }
+      ],
+      "responses_multiples": true,
+      "reponse_correcte": ["A", "B"]
+    },
+    {
+      "id": 3,
+      "question": "Qu'est-ce qu'un 'fork' dans le contexte du développement open-source ?",
+      "options": [
+        { "id": "A", "text": "Une faille de sécurité majeure dans un logiciel." },
+        { "id": "B", "text": "La création d'un nouveau projet logiciel indépendant à partir du code source d'un projet existant." },
+        { "id": "C", "text": "Une fusion de deux projets logiciels concurrents." },
+        { "id": "D", "text": "La version payante d'un logiciel open-source." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 4,
+      "question": "Le concept de 'capitalisme de surveillance', souvent associé au modèle économique des GAFAM, désigne...",
+      "options": [
+        { "id": "A", "text": "La surveillance des employés des GAFAM par leurs dirigeants." },
+        { "id": "B", "text": "La vente de logiciels antivirus et de systèmes de sécurité." },
+        { "id": "C", "text": "Un modèle économique basé sur la collecte et l'analyse massive des données personnelles à des fins de prédiction comportementale et de ciblage publicitaire." },
+        { "id": "D", "text": "La surveillance des activités illégales sur internet par les gouvernements." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["C"]
+    },
+    {
+      "id": 5,
+      "question": "Quel principe économique explique en partie la domination des GAFAM sur leurs marchés respectifs ?",
+      "options": [
+        { "id": "A", "text": "La loi de l'offre et de la demande." },
+        { "id": "B", "text": "L'effet de réseau (plus un service a d'utilisateurs, plus sa valeur augmente, attirant encore plus d'utilisateurs)." },
+        { "id": "C", "text": "Le principe de l'obsolescence programmée." },
+        { "id": "D", "text": "La concurrence pure et parfaite." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 6,
+      "question": "Qu'est-ce que le 'Fediverse' (ou la 'Fédivers') ?",
+      "options": [
+        { "id": "A", "text": "Un nouveau métavers développé par Meta (Facebook)." },
+        { "id": "B", "text": "Le nom du cloud de Google." },
+        { "id": "C", "text": "Un ensemble de réseaux sociaux décentralisés et interopérables, comme Mastodon ou PeerTube, qui ne sont pas contrôlés par une seule entité." },
+        { "id": "D", "text": "Un projet de régulation d'internet par l'Union Européenne." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["C"]
+    },
+    {
+      "id": 7,
+      "question": "Pour se détacher des GAFAM, quelles actions concrètes peut-on entreprendre ?",
+      "options": [
+        { "id": "A", "text": "Remplacer son smartphone Android par un iPhone." },
+        { "id": "B", "text": "Utiliser un système d'exploitation comme /e/OS, qui est une version de Android sans les services Google." },
+        { "id": "C", "text": "Héberger ses propres services (fichiers, calendrier, etc.) avec des logiciels comme Nextcloud." },
+        { "id": "D", "text": "Privilégier des fournisseurs de services européens respectueux du RGPD (ex: ProtonMail, Infomaniak)." }
+      ],
+      "responses_multiples": true,
+      "reponse_correcte": ["B", "C", "D"]
+    },
+    {
+      "id": 8,
+      "question": "Quelle est la distinction fondamentale entre le 'noyau Linux' et une 'distribution Linux' (comme Ubuntu ou Debian) ?",
+      "options": [
+        { "id": "A", "text": "Le noyau est la partie graphique, la distribution est la ligne de commande." },
+        { "id": "B", "text": "Le noyau (créé par Linus Torvalds) est le cœur du système qui gère le matériel ; la distribution est un système d'exploitation complet qui inclut le noyau, des logiciels et une interface." },
+        { "id": "C", "text": "Le noyau Linux est payant, les distributions sont gratuites." },
+        { "id": "D", "text": "Il n'y a aucune différence, ce sont des synonymes." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 9,
+      "question": "Dans quel(s) domaine(s) Linux est-il aujourd'hui majoritairement utilisé ?",
+      "options": [
+        { "id": "A", "text": "Les ordinateurs de bureau pour le grand public." },
+        { "id": "B", "text": "Les serveurs web qui hébergent les sites internet." },
+        { "id": "C", "text": "Les supercalculateurs les plus puissants au monde." },
+        { "id": "D", "text": "Les objets connectés (IoT) et les systèmes embarqués (ex: box internet, voitures)." },
+        { "id": "E", "text": "La suite logicielle Adobe Creative Cloud." }
+      ],
+      "responses_multiples": true,
+      "reponse_correcte": ["B", "C", "D"]
+    },
+    {
+      "id": 10,
+      "question": "Qu'est-ce que le 'shell' ou 'terminal' sous Linux ?",
+      "options": [
+        { "id": "A", "text": "Un logiciel antivirus intégré par défaut." },
+        { "id": "B", "text": "Le gestionnaire de fenêtres qui gère l'apparence du bureau." },
+        { "id": "C", "text": "Une interface en ligne de commande qui permet de communiquer directement avec le système d'exploitation." },
+        { "id": "D", "text": "Le magasin d'applications de la distribution." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["C"]
+    },
+    {
+      "id": 11,
+      "question": "Le système d'exploitation Android est basé sur...",
+      "options": [
+        { "id": "A", "text": "Le noyau de Windows." },
+        { "id": "B", "text": "Le noyau de macOS." },
+        { "id": "C", "text": "Le noyau Linux." },
+        { "id": "D", "text": "Un noyau développé entièrement par Google." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["C"]
+    },
+    {
+      "id": 12,
+      "question": "Que garantit le chiffrement de bout en bout (end-to-end encryption) dans une messagerie comme Signal ?",
+      "options": [
+        { "id": "A", "text": "Que les messages sont chiffrés sur les serveurs de l'entreprise mais qu'elle peut y accéder si besoin." },
+        { "id": "B", "text": "Que seuls l'émetteur et le(s) destinataire(s) possèdent les clés pour déchiffrer les messages, rendant leur lecture impossible par un tiers (y compris le fournisseur du service)." },
+        { "id": "C", "text": "Que les messages sont anonymes et que personne ne connaît l'identité de l'émetteur." },
+        { "id": "D", "text": "Que les messages sont automatiquement supprimés après 24 heures." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 13,
+      "question": "Qu'est-ce qu'un 'cookie tiers' (third-party cookie) sur un site web ?",
+      "options": [
+        { "id": "A", "text": "Un fichier nécessaire au bon fonctionnement technique du site que l'on visite." },
+        { "id": "B", "text": "Un cookie déposé par un site différent de celui que l'on visite, souvent utilisé pour le suivi publicitaire et le pistage de la navigation entre plusieurs sites." },
+        { "id": "C", "text": "Un avertissement de sécurité qui prévient d'une faille sur le site." },
+        { "id": "D", "text": "Un petit gâteau virtuel offert lors de la troisième visite sur un site." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 14,
+      "question": "Qu'est-ce que le RGPD (Règlement Général sur la Protection des Données) ?",
+      "options": [
+        { "id": "A", "text": "Un logiciel antivirus européen obligatoire." },
+        { "id": "B", "text": "Une loi américaine qui encadre l'utilisation des données par les GAFAM." },
+        { "id": "C", "text": "Une réglementation européenne qui renforce et unifie la protection des données personnelles des citoyens de l'UE." },
+        { "id": "D", "text": "Un protocole de sécurité pour les réseaux Wi-Fi." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["C"]
+    },
+    {
+      "id": 15,
+      "question": "À quoi sert principalement un VPN (Virtual Private Network) ?",
+      "options": [
+        { "id": "A", "text": "À augmenter la vitesse de sa connexion internet." },
+        { "id": "B", "text": "À chiffrer son trafic internet et à masquer son adresse IP, améliorant ainsi la confidentialité et la sécurité." },
+        { "id": "C", "text": "À bloquer toutes les publicités sur les sites web." },
+        { "id": "D", "text": "À obtenir un accès gratuit à des services normalement payants." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 16,
+      "question": "Dans le cadre de la démarche NIRD, quel est le principal enjeu de l'axe 'Inclusif' ?",
+      "options": [
+        { "id": "A", "text": "S'assurer que tout le monde utilise le même modèle d'ordinateur." },
+        { "id": "B", "text": "Lutter contre l'illectronisme et la fracture numérique (accès au matériel, aux compétences et aux usages)." },
+        { "id": "C", "text": "Inclure plus de publicités dans les logiciels éducatifs." },
+        { "id": "D", "text": "Obliger tous les élèves à s'inscrire sur un réseau social." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 17,
+      "question": "Quel est l'objectif de l'axe 'Responsable' de la démarche NIRD ?",
+      "options": [
+        { "id": "A", "text": "Rendre le chef d'établissement responsable de toutes les pannes informatiques." },
+        { "id": "B", "text": "Encourager l'autonomie, la maîtrise des outils et le développement de l'esprit critique face au numérique, notamment en privilégiant les communs numériques et les logiciels libres." },
+        { "id": "C", "text": "Responsabiliser financièrement les élèves qui cassent du matériel." },
+        { "id": "D", "text": "Utiliser uniquement des logiciels créés par des entreprises françaises." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 18,
+      "question": "L'axe 'Durable' de la démarche NIRD vise à réduire l'empreinte environnementale du numérique. Quelle phase du cycle de vie d'un équipement (smartphone, ordinateur) est la plus impactante ?",
+      "options": [
+        { "id": "A", "text": "Son utilisation quotidienne (consommation électrique)." },
+        { "id": "B", "text": "Son transport depuis le pays de fabrication." },
+        { "id": "C", "text": "Sa phase de recyclage." },
+        { "id": "D", "text": "Sa fabrication (extraction des matières premières, production des composants, assemblage)." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["D"]
+    },
+    {
+      "id": 19,
+      "question": "Qu'est-ce que l'indice de réparabilité, en lien avec un numérique durable ?",
+      "options": [
+        { "id": "A", "text": "Une note qui indique la performance d'un appareil." },
+        { "id": "B", "text": "Une note obligatoire sur certains équipements électroniques en France, informant sur la facilité à les réparer." },
+        { "id": "C", "text": "Le nombre de fois qu'un appareil peut tomber en panne avant de devoir être remplacé." },
+        { "id": "D", "text": "Un indice boursier pour les entreprises de réparation." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 20,
+      "question": "Comment le choix d'un logiciel peut-il impacter la durabilité du matériel ?",
+      { "id": "A", "text": "Les logiciels propriétaires récents exigent souvent des machines puissantes, poussant au renouvellement du matériel." },
+        { "id": "B", "text": "Les systèmes d'exploitation légers, comme certaines distributions Linux, peuvent prolonger la vie d'ordinateurs anciens." },
+        { "id": "C", "text": "Les logiciels libres n'ont aucun impact sur la durabilité du matériel." },
+        { "id": "D", "text": "Utiliser des logiciels en ligne (cloud computing) permet de ne plus avoir besoin d'un ordinateur." }
+      ],
+      "responses_multiples": true,
+      "reponse_correcte": ["A", "B"]
+    },
+    {
+      "id": 21,
+      "question": "Que signifie l'acronyme FOSS (ou FLOSS) ?",
+      "options": [
+        { "id": "A", "text": "Fast Operating System Software." },
+        { "id": "B", "text": "Free and Open Source Software." },
+        { "id": "C", "text": "Firmware of Secure Systems." },
+        { "id": "D", "text": "For Open Source Societies." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 22,
+      "question": "L'argument 'Si c'est gratuit, c'est que vous êtes le produit' s'applique particulièrement à...",
+      "options": [
+        { "id": "A", "text": "L'ensemble des logiciels libres et open-source." },
+        { "id": "B", "text": "Les services des GAFAM financés par la publicité ciblée." },
+        { "id": "C", "text": "Les services publics en ligne." },
+        { "id": "D", "text": "Les distributions Linux comme Debian." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 23,
+      "question": "Quel concept décrit la difficulté pour un utilisateur de changer de service ou de technologie à cause des coûts de transition (perte de données, réapprentissage, incompatibilité) ?",
+      "options": [
+        { "id": "A", "text": "L'effet de réseau." },
+        { "id": "B", "text": "Le coût marginal." },
+        { "id": "C", "text": "L'enfermement propriétaire (vendor lock-in)." },
+        { "id": "D", "text": "La fracture numérique." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["C"]
+    },
+    {
+      "id": 24,
+      "question": "Le 'droit à l'oubli' (ou droit à l'effacement), consacré par le RGPD, permet à un individu de demander...",
+      "options": [
+        { "id": "A", "text": "La suppression de toutes ses données personnelles détenues par un organisme." },
+        { "id": "B", "text": "L'oubli de ses mauvaises notes dans les bulletins scolaires." },
+        { "id": "C", "text": "La suppression de son casier judiciaire." },
+        { "id": "D", "text": "La suppression des informations obsolètes ou non pertinentes des résultats d'un moteur de recherche (déréférencement)." }
+      ],
+      "responses_multiples": true,
+      "reponse_correcte": ["A", "D"]
+    },
+    {
+      "id": 25,
+      "question": "En quoi la 'sobriété numérique' est-elle un pilier d'un numérique durable ?",
+      "options": [
+        { "id": "A", "text": "Elle consiste à ne plus utiliser du tout les technologies numériques." },
+        { "id": "B", "text": "Elle vise à réduire l'usage du numérique à ce qui est réellement utile et à concevoir des services moins gourmands en ressources (données, énergie)." },
+        { "id": "C", "text": "Elle encourage la production d'équipements aux designs plus simples et moins colorés." },
+        { "id": "D", "text": "Elle implique de passer en mode 'ne pas déranger' sur son téléphone en permanence." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    }
+  ]
+}

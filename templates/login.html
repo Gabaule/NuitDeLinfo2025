@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Connexion - NIRD{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-card">
+        <div class="hero-logo">NIRD</div>
+        <h1>Connexion</h1>
+        <p>Connectez-vous pour accéder aux quiz et au chatbot ShadyGPT</p>
+
+        <form method="POST" action="{{ url_for('auth.login') }}" class="login-form">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required autofocus>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn primary">Se connecter</button>
+                <a href="{{ url_for('auth.register') }}" class="btn secondary">Créer un compte</a>
+            </div>
+        </form>
+
+        <div class="login-hint">
+            <p><strong>Compte de test:</strong></p>
+            <p>Email: admin@nuitinfo.com</p>
+            <p>Mot de passe: admin123</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

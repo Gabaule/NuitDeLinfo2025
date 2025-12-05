@@ -239,6 +239,48 @@ Pour toute question, voir la documentation PostgreSQL ou Flask :
 - PostgreSQL : https://www.postgresql.org/docs/
 - Flask-SQLAlchemy : https://flask-sqlalchemy.palletsprojects.com/
 
+## Demo front Flask (maquette UI NIRD)
+
+Une maquette front simple est disponible via Flask (fichiers `app.py`, `templates/`, `static/`).
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+FLASK_APP=app.py flask run
+# puis ouvrir http://localhost:5000
+```
+
+Le rendu reprend les écrans partagés (hero, liste des quiz, écran de question). Remplacez ensuite les données fictives dans `app.py` par vos vraies données/BDD.
+
+## Remplir la base en Docker
+
+Les scripts SQL sont dans `database/init/` et se chargent automatiquement au tout premier démarrage du conteneur PostgreSQL. Pour rejouer le seed des questions sur une base déjà existante, un service one-shot est disponible avec le profil `seed` du docker-compose :
+
+```bash
+docker compose up -d postgres
+docker compose run --rm --profile seed db-seed
+```
+
+Cela exécute `database/init/02-seed.sql` contre la base en cours sans toucher au schéma. (Le profil `seed` évite de lancer ce job à chaque `docker compose up`.)
+
+## Stack complète (Postgres + Flask + Ollama)
+
+- `postgres` : base + init scripts (schéma + questions) via `database/init/`.
+- `db-seed` : job manuel pour réinjection des questions si besoin (`--profile seed`).
+- `ollama` / `ollama-webui` : service IA.
+- `flask` : site web (build local via `Dockerfile`), connecté à Postgres (`DATABASE_URL` pointant vers `postgres`) et à Ollama (`OLLAMA_BASE_URL=http://ollama:11434`).
+
+Lancement complet (build + run) :
+```bash
+docker compose build flask
+FLASK_PORT=5001 docker compose up -d postgres ollama ollama-webui flask
+# si besoin de réinjecter les questions (base vierge) :
+docker compose run --rm --profile seed db-seed
+```
+
+> Port 5000 étant souvent occupé en local, le mapping Flask utilise par défaut 5001 côté host (`FLASK_PORT=5001`). Adaptez avec `FLASK_PORT=xxxx` si nécessaire.
+
 ## Licence
 
 Apache 2.0

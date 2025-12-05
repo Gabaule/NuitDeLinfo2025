@@ -1,0 +1,304 @@
+{
+  "questionnaire": [
+    {
+      "id": 1,
+      "question": "Quelle est la principale différence juridique et philosophique entre une licence permissive (ex: MIT, Apache) et une licence copyleft forte (ex: GNU GPLv3) ?",
+      "options": [
+        { "id": "A", "text": "Les licences permissives autorisent l'utilisation commerciale, contrairement aux licences copyleft." },
+        { "id": "B", "text": "Les licences copyleft imposent que les œuvres dérivées soient distribuées sous une licence compatible, préservant la liberté du code, tandis que les licences permissives autorisent l'intégration dans des logiciels propriétaires sans cette contrainte." },
+        { "id": "C", "text": "Les licences permissives sont validées par l'Open Source Initiative (OSI), alors que les licences copyleft sont validées par la Free Software Foundation (FSF)." },
+        { "id": "D", "text": "Le copyleft est un concept américain, tandis que les licences permissives sont d'origine européenne." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 2,
+      "question": "Le modèle de développement open-source décrit par Eric S. Raymond dans 'La Cathédrale et le Bazar' oppose deux approches. Qu'est-ce qui caractérise le 'Bazar' ?",
+      "options": [
+        { "id": "A", "text": "Un développement centralisé, planifié et mené par un petit groupe d'experts (La Cathédrale)." },
+        { "id": "B", "text": "Un développement décentralisé, ouvert, où les contributions et les versions sont fréquentes, s'appuyant sur une large communauté (Le Bazar)." },
+        { "id": "C", "text": "Un modèle économique basé sur la vente de licences logicielles." },
+        { "id": "D", "text": "Une méthode de développement propriétaire utilisée exclusivement par Microsoft." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 3,
+      "question": "Quel est le principal modèle économique des entreprises comme Red Hat ou SUSE, bâti autour de Linux ?",
+      "options": [
+        { "id": "A", "text": "La vente de licences pour le système d'exploitation Linux lui-même." },
+        { "id": "B", "text": "La vente de matériel informatique optimisé pour Linux." },
+        { "id": "C", "text": "La vente de souscriptions offrant du support technique, de la maintenance, de la certification et des services professionnels pour leurs distributions Linux." },
+        { "id": "D", "text": "La collecte et la vente des données des utilisateurs de leurs distributions." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["C"]
+    },
+    {
+      "id": 4,
+      "question": "Quel est l'objectif principal du Digital Markets Act (DMA) européen vis-à-vis des GAFAM ?",
+      "options": [
+        { "id": "A", "text": "Interdire l'utilisation des services des GAFAM en Europe." },
+        { "id": "B", "text": "Réguler les contenus haineux et la désinformation sur leurs plateformes." },
+        { "id": "C", "text": "Imposer des obligations spécifiques aux 'contrôleurs d'accès' (gatekeepers) pour garantir des marchés numériques plus équitables et contestables, en interdisant certaines de leurs pratiques d'auto-préférence et en exigeant l'interopérabilité." },
+        { "id": "D", "text": "Mettre en place une taxe sur les bénéfices des géants du numérique." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["C"]
+    },
+    {
+      "id": 5,
+      "question": "Le concept d''enfermement propriétaire' (vendor lock-in) est une stratégie pour retenir les clients. Quels mécanismes techniques y contribuent ?",
+      "options": [
+        { "id": "A", "text": "L'utilisation de formats de fichiers ouverts et de standards interopérables." },
+        { "id": "B", "text": "Des coûts de sortie élevés, par exemple en rendant le transfert de données vers un service concurrent complexe et coûteux." },
+        { "id": "C", "text": "L'utilisation d'API propriétaires non documentées et d'une forte intégration verticale entre les services d'un même écosystème." },
+        { "id": "D", "text": "La publication du code source du service sous une licence libre." }
+      ],
+      "responses_multiples": true,
+      "reponse_correcte": ["B", "C"]
+    },
+    {
+      "id": 6,
+      "question": "Qu'est-ce que l'initiative européenne GAIA-X vise à développer pour contrer la domination des GAFAM ?",
+      "options": [
+        { "id": "A", "text": "Un nouveau système d'exploitation concurrent de Windows et macOS." },
+        { "id": "B", "text": "Un moteur de recherche européen financé par des fonds publics." },
+        { "id": "C", "text": "Un projet visant à créer une infrastructure de données fédérée, ouverte et souveraine, basée sur des standards communs, pour renforcer l'autonomie numérique de l'Europe." },
+        { "id": "D", "text": "Une messagerie instantanée chiffrée pour les gouvernements européens." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["C"]
+    },
+    {
+      "id": 7,
+      "question": "En termes d'architecture, qu'est-ce qui distingue principalement le noyau Linux d'un micro-noyau (comme Mach, utilisé dans les premières versions de macOS) ?",
+      "options": [
+        { "id": "A", "text": "Le noyau Linux est entièrement modulaire et ne contient aucun pilote de périphérique." },
+        { "id": "B", "text": "Linux est un noyau monolithique où les principaux services (gestion des processus, de la mémoire, des systèmes de fichiers, pilotes) s'exécutent dans le même espace (l'espace noyau), contrairement à un micro-noyau qui délègue la plupart des services à des processus externes (en espace utilisateur)." },
+        { "id": "C", "text": "Les micro-noyaux sont plus performants mais moins stables que les noyaux monolithiques." },
+        { "id": "D", "text": "Le noyau Linux ne peut fonctionner que sur des architectures x86." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 8,
+      "question": "Quel est le rôle des 'cgroups' (control groups) et des 'namespaces' dans le noyau Linux, qui sont des technologies fondamentales pour la conteneurisation (Docker, Kubernetes) ?",
+      "options": [
+        { "id": "A", "text": "Gérer les permissions des utilisateurs et des groupes sur les fichiers." },
+        { "id": "B", "text": "Installer et mettre à jour les paquets logiciels." },
+        { "id": "C", "text": "Les cgroups limitent et contrôlent les ressources (CPU, RAM, I/O) allouées à un groupe de processus, tandis que les namespaces isolent la vue qu'ont ces processus du système (PID, réseau, utilisateurs, etc.)." },
+        { "id": "D", "text": "Configurer l'interface graphique et l'environnement de bureau." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["C"]
+    },
+    {
+      "id": 9,
+      "question": "Pourquoi le système d'initialisation 'systemd' est-il parfois controversé au sein de la communauté Linux ?",
+      "options": [
+        { "id": "A", "text": "Parce qu'il est développé par Microsoft." },
+        { "id": "B", "text": "Parce que son approche est jugée trop complexe et monolithique, allant à l'encontre de la philosophie UNIX 'un outil fait une seule chose et la fait bien'." },
+        { "id": "C", "text": "Parce qu'il est moins performant que les anciens systèmes d'init comme SysV." },
+        { "id": "D", "text": "Parce qu'il n'est pas distribué sous une licence libre." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 10,
+      "question": "Qu'est-ce que le Filesystem Hierarchy Standard (FHS) définit sous Linux ?",
+      "options": [
+        { "id": "A", "text": "Le type de système de fichiers à utiliser pour le stockage (ext4, Btrfs, XFS)." },
+        { "id": "B", "text": "Une convention sur l'arborescence des répertoires et l'emplacement des fichiers (ex: /bin, /etc, /var, /usr) pour assurer une cohérence entre les distributions." },
+        { "id": "C", "text": "Un protocole de partage de fichiers en réseau." },
+        { "id": "D", "text": "La hiérarchie des permissions d'accès aux fichiers." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 11,
+      "question": "Comment fonctionne le réseau Tor pour anonymiser le trafic de ses utilisateurs ?",
+      "options": [
+        { "id": "A", "text": "En utilisant un VPN centralisé qui masque l'adresse IP de l'utilisateur." },
+        { "id": "B", "text": "En chiffrant le trafic en plusieurs couches (comme un oignon) et en le faisant transiter par une série de relais aléatoires, de sorte qu'aucun relais unique ne connaît à la fois l'origine et la destination finale du trafic." },
+        { "id": "C", "text": "En supprimant toutes les métadonnées des paquets réseau." },
+        { "id": "D", "text": "En utilisant exclusivement le protocole peer-to-peer pour la communication." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 12,
+      "question": "Dans le contexte de la cryptographie et de la navigation web (HTTPS), quel est le rôle respectif de la cryptographie asymétrique (ex: RSA) et symétrique (ex: AES) lors de l'établissement d'une connexion TLS/SSL ?",
+      "options": [
+        { "id": "A", "text": "Tout le trafic est chiffré avec la cryptographie asymétrique, qui est plus rapide." },
+        { "id": "B", "text": "La cryptographie asymétrique est utilisée au début (handshake) pour authentifier le serveur et échanger de manière sécurisée une clé de session. Ensuite, cette clé est utilisée pour chiffrer la communication de manière symétrique, ce qui est beaucoup plus performant." },
+        { "id": "C", "text": "La cryptographie symétrique authentifie le serveur, et la cryptographie asymétrique chiffre les données." },
+        { "id": "D", "text": "Seule la cryptographie symétrique est utilisée car elle est plus sécurisée." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 13,
+      "question": "Qu'est-ce que la 'confidentialité différentielle' (differential privacy) ?",
+      "options": [
+        { "id": "A", "text": "Une méthode de chiffrement des bases de données." },
+        { "id": "B", "text": "Un cadre mathématique permettant d'analyser des ensembles de données en y ajoutant un 'bruit' statistique, de sorte que les résultats de l'analyse ne permettent pas de savoir si les informations d'un individu spécifique faisaient partie de l'ensemble de données initial ou non." },
+        { "id": "C", "text": "Une politique de confidentialité qui varie selon le pays de l'utilisateur." },
+        { "id": "D", "text": "Une technique qui garantit l'anonymat complet sur Internet." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 14,
+      "question": "Pourquoi les métadonnées de communication (qui a appelé qui, quand, pendant combien de temps) peuvent-elles être aussi, voire plus, révélatrices que le contenu lui-même ?",
+      "options": [
+        { "id": "A", "text": "Car elles sont plus faciles à stocker et à analyser en masse." },
+        { "id": "B", "text": "Car elles permettent de cartographier des réseaux sociaux, de déduire des affiliations, des habitudes de vie ou des événements (ex: appel à un médecin suivi d'un appel à un assureur) même sans connaître le contenu des conversations." },
+        { "id": "C", "text": "Car elles ne sont pas protégées par le chiffrement de bout en bout." },
+        { "id": "D", "text": "Toutes les réponses ci-dessus sont correctes." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["D"]
+    },
+    {
+      "id": 15,
+      "question": "Qu'est-ce qu'une 'attaque par canal auxiliaire' (side-channel attack) en sécurité informatique ?",
+      "options": [
+        { "id": "A", "text": "Une attaque qui exploite une faille dans le code d'un logiciel (ex: buffer overflow)." },
+        { "id": "B", "text": "Une attaque basée sur l'ingénierie sociale pour tromper un utilisateur." },
+        { "id": "C", "text": "Une attaque qui exploite des informations issues de l'implémentation physique d'un système (consommation électrique, temps de calcul, émissions électromagnétiques) pour en déduire des données secrètes comme des clés de chiffrement." },
+        { "id": "D", "text": "Une attaque par déni de service (DDoS)." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["C"]
+    },
+    {
+      "id": 16,
+      "question": "Dans le cadre de la démarche NIRD, en quoi consiste une Analyse du Cycle de Vie (ACV) d'un service numérique ?",
+      "options": [
+        { "id": "A", "text": "À mesurer uniquement la consommation électrique des serveurs pendant la phase d'utilisation du service." },
+        { "id": "B", "text": "À évaluer l'impact environnemental global du service, en incluant la fabrication des terminaux utilisateurs et des infrastructures réseau/serveur, leur phase d'utilisation et leur fin de vie." },
+        { "id": "C", "text": "À calculer la durée de vie moyenne des logiciels utilisés." },
+        { "id": "D", "text": "À analyser le cycle de développement et de mise à jour du service." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 17,
+      "question": "Comment le concept de 'low-tech' peut-il s'appliquer au numérique dans une démarche de durabilité ?",
+      "options": [
+        { "id": "A", "text": "En refusant toute forme de technologie numérique." },
+        { "id": "B", "text": "En concevant des services et des sites web plus simples, moins gourmands en ressources, et en privilégiant des technologies robustes, réparables et moins complexes." },
+        { "id": "C", "text": "En utilisant des ordinateurs plus anciens et moins puissants." },
+        { "id": "D", "text": "En se concentrant uniquement sur des technologies basées sur le texte, sans images ni vidéos." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 18,
+      "question": "Le pilier 'Inclusif' de la démarche NIRD cherche à lutter contre les biais algorithmiques. Qu'est-ce qu'un biais algorithmique ?",
+      "options": [
+        { "id": "A", "text": "Une erreur de programmation qui fait planter le logiciel." },
+        { "id": "B", "text": "Une tendance systématique d'un algorithme à produire des résultats qui désavantagent certains groupes de personnes, souvent en reproduisant et en amplifiant des préjugés existants dans les données d'entraînement." },
+        { "id": "C", "text": "Une fonctionnalité qui rend l'algorithme plus lent pour certains utilisateurs." },
+        { "id": "D", "text": "Un choix délibéré de l'IA pour ignorer certaines données." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 19,
+      "question": "Quel est le 'paradoxe de Jevons' appliqué à l'efficacité énergétique du numérique (Effet rebond) ?",
+      "options": [
+        { "id": "A", "text": "Les gains d'efficacité énergétique d'une technologie diminuent avec le temps." },
+        { "id": "B", "text": "À mesure qu'une technologie devient plus efficace sur le plan énergétique, son utilisation tend à augmenter, ce qui peut annuler (voire dépasser) les économies d'énergie réalisées." },
+        { "id": "C", "text": "Les technologies les plus efficaces sont toujours les plus chères." },
+        { "id": "D", "text": "L'efficacité énergétique est inversement proportionnelle à la puissance de calcul." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 20,
+      "question": "En quoi l'utilisation de 'communs numériques' (ex: Wikipedia, OpenStreetMap, logiciels libres) soutient-elle l'axe 'Responsable' de la démarche NIRD ?",
+      "options": [
+        { "id": "A", "text": "Car ils sont toujours plus sécurisés que les alternatives propriétaires." },
+        { "id": "B", "text": "Car ils sont gérés et maintenus par des GAFAM." },
+        { "id": "C", "text": "Car ils représentent des ressources partagées et gouvernées collectivement, favorisant l'autonomie, la souveraineté numérique et la sortie de logiques purement mercantiles et opaques." },
+        { "id": "D", "text": "Car leur utilisation est gratuite et ne requiert aucune compétence technique." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["C"]
+    },
+    {
+      "id": 21,
+      "question": "Qu'est-ce que le 'Software Bill of Materials' (SBOM) et pourquoi devient-il crucial pour la sécurité et la transparence ?",
+      "options": [
+        { "id": "A", "text": "La facture d'achat d'un logiciel." },
+        { "id": "B", "text": "Une liste exhaustive de tous les composants, bibliothèques et dépendances (libres ou propriétaires) utilisés pour construire un logiciel, permettant de tracer rapidement les vulnérabilités." },
+        { "id": "C", "text": "Le manuel d'utilisation d'un logiciel." },
+        { "id": "D", "text": "Un document légal qui définit les conditions d'utilisation d'un logiciel." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 22,
+      "question": "Comment les 'dark patterns' dans les interfaces utilisateur (UI) sapent-ils le consentement et la protection de la vie privée ?",
+      "options": [
+        { "id": "A", "text": "En utilisant un thème sombre qui consomme moins d'énergie sur les écrans OLED." },
+        { "id": "B", "text": "En rendant les options respectueuses de la vie privée difficiles à trouver, en utilisant un langage trompeur ou en pré-cochant des cases pour inciter l'utilisateur à partager plus de données qu'il ne le souhaiterait." },
+        { "id": "C", "text": "En cachant des fonctionnalités derrière des menus complexes." },
+        { "id": "D", "text": "En utilisant des polices de caractères difficiles à lire pour les personnes malvoyantes." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 23,
+      "question": "Quelle est la principale limite technique du 'droit à l'oubli' face à des technologies comme les blockchains ou les systèmes de fichiers décentralisés (IPFS) ?",
+      "options": [
+        { "id": "A", "text": "Ces technologies ne sont pas soumises au RGPD." },
+        { "id": "B", "text": "L'immuabilité et la décentralisation de ces systèmes rendent l'effacement ou la modification de données a posteriori extrêmement difficile, voire impossible par conception." },
+        { "id": "C", "text": "Seul le créateur de la blockchain peut effacer des données." },
+        { "id": "D", "text": "Le droit à l'oubli ne s'applique qu'aux données textuelles, pas aux transactions financières." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 24,
+      "question": "Quelle affirmation décrit le mieux le concept de 'souveraineté numérique' pour un État ou une organisation ?",
+      "options": [
+        { "id": "A", "text": "Le fait de produire son propre matériel informatique sur son territoire." },
+        { "id": "B", "text": "La capacité à maîtriser et à contrôler son infrastructure, ses logiciels, ses données et les règles qui s'y appliquent, afin de ne pas dépendre de puissances ou d'entreprises étrangères." },
+        { "id": "C", "text": "L'interdiction totale d'utiliser des logiciels ou services étrangers." },
+        { "id": "D", "text": "La possession d'une monnaie numérique de banque centrale." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["B"]
+    },
+    {
+      "id": 25,
+      "question": "L'éco-conception de services numériques, un aspect du NIRD, vise à...",
+      "options": [
+        { "id": "A", "text": "Utiliser exclusivement des énergies renouvelables pour alimenter les data centers." },
+        { "id": "B", "text": "Réduire la quantité de fonctionnalités d'une application pour la rendre moins attractive." },
+        { "id": "C", "text": "Intégrer les enjeux environnementaux à toutes les étapes de la conception d'un service (UX/UI, architecture, code) pour minimiser son empreinte écologique tout au long de son cycle de vie." },
+        { "id": "D", "text": "Rendre l'interface du service entièrement verte pour rappeler la nature." }
+      ],
+      "responses_multiples": false,
+      "reponse_correcte": ["C"]
+    }
+  ]
+}

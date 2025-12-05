@@ -42,22 +42,79 @@ services:
     networks:
       - nuitinfo_network
 
+  flask:
+    build:
+      context: .
+    container_name: nuitinfo_flask
+    environment:
+      FLASK_APP: app.py
+      FLASK_RUN_HOST: 0.0.0.0
+      FLASK_RUN_PORT: 5000
+      DATABASE_URL: postgresql://${POSTGRES_USER:-nuitinfo_user}:${POSTGRES_PASSWORD:-nuitinfo_password}@postgres:5432/${POSTGRES_DB:-nuitinfo_db}
+      OLLAMA_BASE_URL: http://ollama:11434
+    depends_on:
+      postgres:
+        condition: service_healthy
+      ollama:
+        condition: service_started
+    ports:
+      - "${FLASK_PORT:-5001}:5000"
+    restart: unless-stopped
+    networks:
+      - nuitinfo_network
+
+  db-seed:
+    image: postgres:16-alpine
+    container_name: nuitinfo_db_seed
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      PGPASSWORD: ${POSTGRES_PASSWORD:-nuitinfo_password}
+    volumes:
+      - ./database/init:/seeds:ro
+    entrypoint: ["sh", "-c"]
+    command: [
+      "psql -h postgres -U ${POSTGRES_USER:-nuitinfo_user} -d ${POSTGRES_DB:-nuitinfo_db} -f /seeds/02-seed.sql"
+    ]
+    networks:
+      - nuitinfo_network
+    restart: "no"
+    profiles: ["seed"]
+
   ollama:
     image: ollama/ollama:latest
     container_name: nuitinfo_ollama
     volumes:
-      - ollama_data:/root/.ollama
+      - ./docker-data/ollama:/root/.ollama
     ports:
       - "${OLLAMA_PORT:-11434}:11434"
     restart: unless-stopped
     networks:
       - nuitinfo_network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:11434"]
+      test: ["CMD-SHELL", "ollama list || exit 1"]
       interval: 30s
       timeout: 10s
-      retries: 3
+      retries: 5
       start_period: 60s
+
+  ollama-init:
+    image: ollama/ollama:latest
+    container_name: nuitinfo_ollama_init
+    depends_on:
+      ollama:
+        condition: service_healthy
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        echo "🚀 Downloading llama3.2:1b model for ShadyGPT..."
+        ollama pull llama3.2:1b --ollama-host http://ollama:11434
+        echo "✅ Model llama3.2:1b ready!"
+    networks:
+      - nuitinfo_network
+    restart: "no"
+    profiles: ["init"]
 
   ollama-webui:
     image: ghcr.io/open-webui/open-webui:main
@@ -78,8 +135,6 @@ volumes:
   postgres_data:
     driver: local
   pgadmin_data:
-    driver: local
-  ollama_data:
     driver: local
   ollama_webui_data:
     driver: local

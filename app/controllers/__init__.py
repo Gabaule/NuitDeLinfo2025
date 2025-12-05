@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Controllers package - Architecture MVC
 
 Les controllers gèrent la logique métier et font le lien entre

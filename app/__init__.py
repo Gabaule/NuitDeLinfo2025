@@ -60,4 +60,8 @@ def create_app(config_name=None):
         from flask_login import current_user
         return dict(current_user=current_user)
 
+    # Initialisation automatique de la BDD
+    from app.init_db import init_database
+    init_database(app)
+
     return app

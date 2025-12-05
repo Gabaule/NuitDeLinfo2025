@@ -17,7 +17,7 @@ class Config:
 
     # Ollama (ShadyGPT)
     OLLAMA_BASE_URL = os.environ.get('OLLAMA_BASE_URL') or 'http://localhost:11434'
-    OLLAMA_MODEL = 'llama3.2:1b'
+    OLLAMA_MODEL = 'tinyllama'
 
     # Session
     PERMANENT_SESSION_LIFETIME = timedelta(days=7)
@@ -31,7 +31,7 @@ class Config:
 
 
 class DevelopmentConfig(Config):
-    """Configuration développement"""
+    """Configuration dï¿½veloppement"""
     DEBUG = True
     SQLALCHEMY_ECHO = True
 

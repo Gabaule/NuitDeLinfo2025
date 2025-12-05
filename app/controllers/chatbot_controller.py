@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Chatbot Controller - Architecture MVC"""
 from flask import Blueprint, request, jsonify, current_app, Response
 from flask_login import login_required, current_user

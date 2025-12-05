@@ -28,7 +28,7 @@
                 <div class="quiz-desc">{{ quiz.description }}</div>
                 <span class="chip">{{ quiz.badge }}</span>
             </div>
-            <button class="play-btn" aria-label="Lancer le quiz {{ quiz.title }}">▶</button>
+            <a href="{{ url_for('qcm.start_quiz', difficulty=quiz.difficulty) }}" class="play-btn" aria-label="Lancer le quiz {{ quiz.title }}">▶</a>
         </article>
         {% endfor %}
     </div>

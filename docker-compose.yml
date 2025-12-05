@@ -57,6 +57,8 @@ services:
         condition: service_healthy
       ollama:
         condition: service_started
+      ollama-init:
+        condition: service_completed_successfully
     ports:
       - "${FLASK_PORT:-5001}:5000"
     restart: unless-stopped
@@ -105,16 +107,22 @@ services:
     depends_on:
       ollama:
         condition: service_healthy
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
     entrypoint: ["/bin/sh", "-c"]
     command:
       - |
-        echo "🚀 Downloading llama3.2:1b model for ShadyGPT..."
-        ollama pull llama3.2:1b --ollama-host http://ollama:11434
-        echo "✅ Model llama3.2:1b ready!"
+        echo "🔍 Checking if tinyllama model exists..."
+        if ! OLLAMA_HOST=http://ollama:11434 ollama list | grep -q "tinyllama"; then
+          echo "🚀 Downloading tinyllama model for ShadyGPT..."
+          OLLAMA_HOST=http://ollama:11434 ollama pull tinyllama
+          echo "✅ Model tinyllama ready!"
+        else
+          echo "✅ Model tinyllama already exists!"
+        fi
     networks:
       - nuitinfo_network
     restart: "no"
-    profiles: ["init"]
 
   ollama-webui:
     image: ghcr.io/open-webui/open-webui:main

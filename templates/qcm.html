@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% block title %}Question {{question_num}}/30 - NIRD{% endblock %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/qcm.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/shadygpt.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="qcm-section">
+    <!-- Progress bar -->
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: {{ (question_num / 30 * 100)|int }}%"></div>
+        </div>
+        <span class="progress-text">Question {{ question_num }} / 30</span>
+    </div>
+
+    <!-- Question card -->
+    <div class="question-card"
+         data-session-id="{{ session.id }}"
+         data-question-num="{{ question_num }}"
+         data-theme="{{ question.theme.name }}"
+         data-question-text="{{ question.question_text }}">
+
+        <div class="question-meta">
+            <span class="badge badge-{{ session.difficulty }}">{{ session.difficulty|capitalize }}</span>
+            <span class="badge badge-theme">{{ question.theme.name }}</span>
+        </div>
+
+        <h2 class="question-title">{{ question.question_text }}</h2>
+
+        <form id="answer-form" class="answer-form">
+            {% if question.question_type == 'multiple_choice' %}
+                <div class="answers-grid">
+                    {% for choice in question.choices %}
+                    <button type="button"
+                            class="answer {% if existing_answer and choice.id in existing_answer|map(attribute='choice_id')|list %}active{% endif %}"
+                            data-choice-id="{{ choice.id }}">
+                        <span class="pill">{{ choice.choice_order }}</span>
+                        <span class="answer-text">{{ choice.choice_text }}</span>
+                    </button>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="text-answer">
+                    <input type="text"
+                           id="text-answer"
+                           name="text_answer"
+                           placeholder="Votre réponse..."
+                           value="{{ existing_answer.text_answer if existing_answer else '' }}"
+                           autocomplete="off">
+                </div>
+            {% endif %}
+
+            {% if question.explanation %}
+            <div class="hint">
+                <strong>Indice:</strong> Cliquez pour révéler
+                <span class="hint-text" style="display: none;">{{ question.explanation }}</span>
+            </div>
+            {% endif %}
+
+            <div class="navigation-buttons">
+                {% if question_num > 1 %}
+                <a href="{{ url_for('qcm.question', session_id=session.id, num=question_num-1) }}"
+                   class="btn secondary">◀ Précédent</a>
+                {% endif %}
+
+                <button type="submit" class="btn primary">Valider</button>
+
+                {% if question_num < 30 %}
+                <a href="{{ url_for('qcm.question', session_id=session.id, num=question_num+1) }}"
+                   class="btn secondary">Suivant ▶</a>
+                {% else %}
+                <a href="{{ url_for('qcm.complete_quiz', session_id=session.id) }}"
+                   class="btn success">Terminer ✓</a>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- ShadyGPT Chatbot Draggable -->
+<div id="shadygpt-widget" class="shadygpt-widget">
+    <div class="shadygpt-header" id="shadygpt-header">
+        <div class="shadygpt-title">
+            <span class="shadygpt-icon">🤖</span>
+            <span>ShadyGPT</span>
+        </div>
+        <div class="shadygpt-controls">
+            <button id="minimize-btn" class="control-btn" aria-label="Minimiser">−</button>
+            <button id="maximize-btn" class="control-btn" aria-label="Agrandir" style="display:none;">□</button>
+        </div>
+    </div>
+
+    <div class="shadygpt-body">
+        <div id="chat-messages" class="chat-messages">
+            <div class="chat-message assistant">
+                <strong>ShadyGPT:</strong>
+                <p>Salut! Je suis ShadyGPT, ton assistant IA. Pose-moi des questions sur le quiz en cours! 🚀</p>
+            </div>
+        </div>
+
+        <form id="chat-form" class="chat-input-form">
+            <input type="text"
+                   id="chat-input"
+                   placeholder="Pose-moi une question..."
+                   autocomplete="off">
+            <button type="submit" class="send-btn">➤</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block body_extra %}
+<script src="{{ url_for('static', filename='js/qcm.js') }}"></script>
+<script src="{{ url_for('static', filename='js/shadygpt.js') }}"></script>
+{% endblock %}
